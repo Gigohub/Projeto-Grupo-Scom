@@ -1,0 +1,11 @@
+{
+    "name": "jogo-engenharia-urbana",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "description": "Jogo de cartas sobre decisões de engenharia para a cidade",
+    "scripts": {
+      "test": "node --test",
+      "converter": "node ferramentas/converter-csv.js"
+    }
+  }
