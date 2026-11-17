@@ -10,6 +10,12 @@ test('existem problemas suficientes para uma partida inteira', () => {
   assert.ok(PROBLEMAS.length >= CONFIG.totalDias, `só há ${PROBLEMAS.length} problemas`);
 });
 
+test('todo problema tem título, setor e descrição', () => {
+    for (const p of PROBLEMAS) {
+      assert.ok(p.titulo && p.setor && p.descricao, `problema ${p.id} com texto faltando`);
+    }
+  });
+
 test('todo problema tem uma solução de cada disciplina', () => {
   for (const p of PROBLEMAS) {
     assert.equal(p.solucoes.length, DISCIPLINAS.length, `problema ${p.id}`);

@@ -81,13 +81,13 @@ export function normalizarChave(nome) {
 }
 
 /**
- * Lê o CSV de UMA disciplina e devolve:
- * { id, nome, solucoes: [{ id, texto, efeitos: { dinheiro, eficiencia, sustentabilidade, felicidade } }] }
- * O nome da disciplina vem do cabeçalho da 2ª coluna (ex.: "Automação").
- * Colunas extras (ex.: "Dinheiro original") são ignoradas.
+ * Parte comum da leitura de qualquer CSV (disciplinas e problemas):
+ * confere acentos, arquivo vazio, colunas obrigatórias e IDs repetidos.
+ * Devolve o cabeçalho e um registro por linha: { id, numeroLinha, celulas, valor }
+ * — valor('setor') devolve a célula daquela coluna, já sem espaços nas pontas.
  * `nomeArquivo` serve só para as mensagens de erro ficarem claras.
  */
-export function lerDisciplina(texto, nomeArquivo) {
+function lerTabela(texto, nomeArquivo, obrigatorias) {
   // o caractere \uFFFD (aparece como um losango com ?) surge quando o arquivo não foi salvo em UTF-8 e os acentos se perderam
   if (texto.includes('\uFFFD')) {
     throw new Error(
@@ -101,15 +101,14 @@ export function lerDisciplina(texto, nomeArquivo) {
   }
   const chaves = cabecalho.map(normalizarChave);
 
-  for (const coluna of ['id', ...COLUNAS_EFEITO]) {
+  for (const coluna of ['id', ...obrigatorias]) {
     if (!chaves.includes(coluna)) {
       throw new Error(`${nomeArquivo}: falta a coluna "${coluna}" no cabeçalho`);
     }
   }
-  const nome = (cabecalho[1] ?? '').trim();
 
   const idsVistos = new Set();
-  const solucoes = linhas.map((celulas, indice) => {
+  const registros = linhas.map((celulas, indice) => {
     const numeroLinha = indice + 2; // +1 do cabeçalho, +1 porque a contagem começa em 1
     const valor = (coluna) => (celulas[chaves.indexOf(coluna)] ?? '').trim();
 
@@ -118,7 +117,23 @@ export function lerDisciplina(texto, nomeArquivo) {
       throw new Error(`${nomeArquivo}: problema ${id} repetido (linha ${numeroLinha})`);
     }
     idsVistos.add(id);
+    return { id, numeroLinha, celulas, valor };
+  });
 
+  return { cabecalho, registros };
+}
+
+/**
+ * Lê o CSV de UMA disciplina e devolve:
+ * { id, nome, solucoes: [{ id, texto, efeitos: { dinheiro, eficiencia, sustentabilidade, felicidade } }] }
+ * O nome da disciplina vem do cabeçalho da 2ª coluna (ex.: "Automação").
+ * Colunas extras (ex.: "Dinheiro original") são ignoradas.
+ */
+export function lerDisciplina(texto, nomeArquivo) {
+  const { cabecalho, registros } = lerTabela(texto, nomeArquivo, COLUNAS_EFEITO);
+  const nome = (cabecalho[1] ?? '').trim();
+
+  const solucoes = registros.map(({ id, numeroLinha, celulas, valor }) => {
     const efeitos = {};
     for (const coluna of COLUNAS_EFEITO) {
       const texto = valor(coluna);
@@ -136,27 +151,59 @@ export function lerDisciplina(texto, nomeArquivo) {
   return { id: normalizarChave(nome), nome, solucoes };
 }
 
+// Colunas obrigatórias da planilha de problemas (já normalizadas).
+const COLUNAS_PROBLEMA = ['titulo', 'setor', 'descricao do problema'];
+
+/** A planilha de problemas é a única com a coluna "Título"; as de disciplina não têm. */
+export function ehArquivoDeProblemas(texto) {
+  const [cabecalho = []] = lerCSV(texto);
+  return cabecalho.map(normalizarChave).includes('titulo');
+}
+
 /**
- * Junta as disciplinas em uma lista de problemas, cada um com uma
- * solução por disciplina (na mesma ordem das disciplinas recebidas):
- * [{ id: 'P001', enunciado: '', solucoes: [{ disciplina, texto, efeitos }, ...] }]
- * Dá erro se algum problema não existir em todas as disciplinas.
+ * Lê a planilha de problemas e devolve:
+ * [{ id: 'P001', titulo: 'Fumaça Preta...', setor: 'Mobilidade', descricao: 'Ônibus antigos...' }]
+ * Outras colunas (ex.: "Tags de Engenharia") são ignoradas.
  */
-export function montarProblemas(disciplinas) {
-  const todosIds = new Set(disciplinas.flatMap((d) => d.solucoes.map((s) => s.id)));
+export function lerProblemas(texto, nomeArquivo) {
+  const { registros } = lerTabela(texto, nomeArquivo, COLUNAS_PROBLEMA);
+  return registros.map(({ id, numeroLinha, valor }) => {
+    if (!valor('titulo')) {
+      throw new Error(`${nomeArquivo}, linha ${numeroLinha}: o problema ${id} está sem título`);
+    }
+    return { id, titulo: valor('titulo'), setor: valor('setor'), descricao: valor('descricao do problema') };
+  });
+}
+
+/**
+ * Junta os textos dos problemas com as soluções das disciplinas. Cada problema
+ * fica com uma solução por disciplina (na mesma ordem das disciplinas recebidas):
+ * [{ id, titulo, setor, descricao, solucoes: [{ disciplina, texto, efeitos }, ...] }]
+ * Dá erro se algum ID faltar na planilha de problemas ou em alguma disciplina.
+ */
+export function montarProblemas(disciplinas, textos) {
+  const todosIds = new Set([
+    ...textos.map((t) => t.id),
+    ...disciplinas.flatMap((d) => d.solucoes.map((s) => s.id)),
+  ]);
   const idsOrdenados = [...todosIds].sort();
 
-  return idsOrdenados.map((id) => ({
-    id,
-    enunciado: '', // os textos dos problemas ainda serão escritos
-    solucoes: disciplinas.map((d) => {
-      const solucao = d.solucoes.find((s) => s.id === id);
-      if (!solucao) {
-        throw new Error(`O problema ${id} não tem solução na disciplina ${d.id}`);
-      }
-      return { disciplina: d.id, texto: solucao.texto, efeitos: solucao.efeitos };
-    }),
-  }));
+  return idsOrdenados.map((id) => {
+    const textoDoProblema = textos.find((t) => t.id === id);
+    if (!textoDoProblema) {
+      throw new Error(`O problema ${id} tem soluções, mas não está na planilha de problemas`);
+    }
+    return {
+      ...textoDoProblema,
+      solucoes: disciplinas.map((d) => {
+        const solucao = d.solucoes.find((s) => s.id === id);
+        if (!solucao) {
+          throw new Error(`O problema ${id} não tem solução na disciplina ${d.id}`);
+        }
+        return { disciplina: d.id, texto: solucao.texto, efeitos: solucao.efeitos };
+      }),
+    };
+  });
 }
 
 /**

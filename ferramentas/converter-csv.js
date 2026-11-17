@@ -5,7 +5,13 @@
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { lerDisciplina, montarProblemas, gerarModulo } from './lib-csv.js';
+import {
+  lerDisciplina,
+  ehArquivoDeProblemas,
+  lerProblemas,
+  montarProblemas,
+  gerarModulo,
+} from './lib-csv.js';
 
 // Pasta raiz do projeto (um nível acima de ferramentas/)
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -20,12 +26,27 @@ function main() {
     throw new Error(`Nenhum CSV encontrado em ${PASTA_CSV}`);
   }
 
+  const lidos = arquivos.map((nome) => ({ nome, texto: readFileSync(join(PASTA_CSV, nome), 'utf8') }));
+
+  // um dos CSVs é a planilha de problemas (tem a coluna "Título"); os outros são disciplinas
+  const planilhas = lidos.filter((a) => ehArquivoDeProblemas(a.texto));
+  if (planilhas.length !== 1) {
+    throw new Error(
+      `Era esperada 1 planilha de problemas (CSV com a coluna "Título") em ${PASTA_CSV}, mas há ${planilhas.length}`,
+    );
+  }
+  const textos = lerProblemas(planilhas[0].texto, planilhas[0].nome);
+
   // ordena pelo id da disciplina: assim a saída é sempre a mesma,
   // mesmo que alguém renomeie os arquivos
-  const disciplinas = arquivos
-    .map((nome) => lerDisciplina(readFileSync(join(PASTA_CSV, nome), 'utf8'), nome))
+  const disciplinas = lidos
+    .filter((a) => a !== planilhas[0])
+    .map((a) => lerDisciplina(a.texto, a.nome))
     .sort((a, b) => a.id.localeCompare(b.id));
-  const problemas = montarProblemas(disciplinas);
+  if (disciplinas.length === 0) {
+    throw new Error(`Nenhum CSV de disciplina (soluções) encontrado em ${PASTA_CSV}`);
+  }
+  const problemas = montarProblemas(disciplinas, textos);
 
   writeFileSync(SAIDA, gerarModulo(problemas, disciplinas), 'utf8');
 

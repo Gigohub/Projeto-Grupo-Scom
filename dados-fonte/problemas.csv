@@ -1,0 +1,101 @@
+ID,Título,Tags de Engenharia,Setor,Descrição do Problema
+P001,Fumaça Preta na Frota Municipal,[Mecânica] [Ambiental],Mobilidade,"Ônibus antigos operam com motores desregulados, gerando queixas de poluição e multas ambientais."
+P002,Terminais sem Acessibilidade,[Mecânica],Mobilidade,Elevadores e escadas rolantes das estações de integração estão parados há meses por falta de peças.
+P003,Falhas nos Caminhões de Lixo,[Mecânica] [Ambiental],Resíduos,"O sistema hidráulico dos caminhões compactadores quebra constantemente, atrasando a coleta nos bairros."
+P004,Fadiga em Ponte Metálica,[Mecânica],Infraestrutura,Inspeção técnica apontou vibração excessiva e corrosão nos apoios da principal ponte do centro.
+P005,Falta de Dragas para Córregos,[Mecânica] [Ambiental],Clima,O período de chuvas se aproxima e a prefeitura não possui maquinário pesado para desassorear os rios.
+P006,Climatização Hospitalar Obsoleta,[Mecânica] [Elétrica],Saúde,Os chillers do hospital municipal consomem energia em excesso e falham em dias de calor extremo.
+P007,Oficina Municipal Sucateada,[Mecânica],Gestão,A garagem da prefeitura demora semanas para reparar veículos oficiais por falta de ferramentas modernas.
+P008,Desgaste Prematuro nos Trilhos,[Mecânica],Mobilidade,"O VLT urbano apresenta atrito anormal nas curvas, exigindo redução de velocidade e atrasando viagens."
+P009,Ruído Industrial nos Bairros,[Mecânica] [Ambiental],Indústria,"Máquinas pesadas do distrito industrial operam à noite sem isolamento acústico, gerando protestos."
+P010,Bombas de Água no Limite,[Mecânica] [Elétrica],Saneamento,As bombas de recalque da estação principal operam superaquecidas e correm risco de colapso mecânico.
+P011,Ambulâncias Indisponíveis,[Mecânica],Saúde,Metade da frota de emergência está parada aguardando retífica de motores e troca de suspensão.
+P012,Asfalto Destruído por Cargas,[Mecânica],Infraestrutura,Caminhões com excesso de peso afundam o pavimento das vias de escoamento agrícola toda semana.
+P013,Caldeiras Defeituosas em Creches,[Mecânica],Educação,O sistema de aquecimento de água das creches apresenta vazamentos e risco de ruptura.
+P014,Teleférico Turístico Interditado,[Mecânica] [Elétrica],Turismo,Desgaste nos cabos de tração obrigou o fechamento da principal atração turística da serra.
+P015,Balsa Fluvial em Ritmo Lento,[Mecânica],Mobilidade,"A travessia entre distritos opera com apenas um motor auxiliar, formando filas quilométricas de carros."
+P016,Ônibus sem Plataformas Elevatórias,[Mecânica],Mobilidade,Pessoas com deficiência enfrentam barreiras diárias porque os elevadores dos ônibus emperram.
+P017,Comportas de Contenção Travadas,[Mecânica] [Ambiental],Clima,A oxidação travou o mecanismo de abertura das comportas da represa de contenção de cheias.
+P018,Aluguel Caro de Máquinas Pesadas,[Mecânica],Gestão,A secretaria de obras gasta fortuna alugando escavadeiras por não ter frota própria operacional.
+P019,Vazamento de Óleo na Garagem,[Mecânica] [Ambiental],Resíduos,O descarte precário de lubrificantes na oficina municipal está contaminando o solo e as galerias.
+P020,Ventilação Precária nos Túneis,[Mecânica] [Elétrica],Mobilidade,"Exaustores dos túneis rodoviários operam abaixo da vazão mínima, acumulando monóxido de carbono."
+P021,Parques com Aparelhos Enferrujados,[Mecânica],Lazer,Academias ao ar livre e brinquedos infantis apresentam ferrugem e pontas cortantes por falta de manutenção.
+P022,Incinerador Hospitalar Inoperante,[Mecânica] [Ambiental],Saúde,Falha mecânica na câmara de combustão paralisou o tratamento local de resíduos infectantes.
+P023,Bicicletas Públicas Quebradas,[Mecânica],Mobilidade,Alto índice de falha nos freios e correntes reduziu pela metade o uso das bicicletas compartilhadas.
+P024,Sirenes de Encosta Inoperantes,[Mecânica] [Automação],Segurança,Os mecanismos de acionamento das sirenes de alerta de deslizamento falharam no último teste.
+P025,Acúmulo de Sucata Metálica,[Mecânica] [Ambiental],Resíduos,O pátio municipal está lotado de carcaças e cavacos sem prensa hidráulica para compactação.
+P026,Apagões no Centro Comercial,[Elétrica],Energia,Quedas de energia diárias no horário de pico geram prejuízos ao comércio e revolta dos lojistas.
+P027,Furto Recorrente de Cabos,[Elétrica] ,Energia,Bairros inteiros ficam às escuras toda semana devido ao roubo de fios de cobre da rede pública.
+P028,Conta de Luz da Prefeitura Explodindo,[Elétrica],Gestão,O gasto energético dos prédios administrativos consome parcela crítica do orçamento mensal.
+P029,Emaranhado de Fios Clandestinos,[Elétrica],Energia,"Ligações irregulares (""gatos"") sobrecarregam transformadores e provocam incêndios em postes."
+P030,Hospital sem Backup Energético,[Elétrica],Saúde,Os geradores de emergência do pronto-socorro não suportam a carga total do centro cirúrgico.
+P031,Falta de Eletropostos na Cidade,[Elétrica] ,Energia,Empresas recusam-se a eletrificar frotas locais por ausência de infraestrutura de recarga rápida.
+P032,Praças Escuras e Inseguras,[Elétrica],Segurança,Lâmpadas queimadas e postes antigos transformaram parques centrais em zonas de criminalidade noturna.
+P033,Subestação da Zona Leste no Limite,[Elétrica],Energia,Transformadores operam em temperatura crítica devido à expansão acelerada de novos condomínios.
+P034,Oscilações de Tensão no Comércio,[Elétrica],Energia,Picos na rede elétrica estão queimando freezers e computadores de pequenos empreendedores.
+P035,Ginásios sem Jogos Noturnos,[Elétrica],Lazer,Refletores antigos queimaram e os torneios esportivos noturnos da cidade foram cancelados.
+P036,Comunidade Rural sem Eletricidade,[Elétrica],Energia,Produtores agrícolas do distrito norte ainda dependem de geradores a diesel por falta de rede elétrica.
+P037,Postes de Madeira em Risco,[Elétrica],Infraestrutura,"Tempestades de vento ameaçam derrubar postes antigos apodrecidos, cortando energia e bloqueando ruas."
+P038,Escolas sem Capacidade Elétrica,[Elétrica],Educação,A fiação interna das escolas não suporta a instalação de ventiladores ou aparelhos de ar-condicionado.
+P039,Multas por Baixo Fator de Potência,[Elétrica],Gestão,A concessionária está multando a prefeitura mensalmente pela ineficiência reativa dos prédios públicos.
+P040,Prédios Históricos sem Para-Raios,[Elétrica],Infraestrutura,Museus e casarões tombados estão desprotegidos contra descargas atmosféricas severas.
+P041,Poluição Luminosa no Centro,[Elétrica] [Ambiental],Energia,Refletores mal direcionados desperdiçam energia e perturbam a fauna noturna e moradores.
+P042,Exigência de Linha de Alta Tensão,[Elétrica],Indústria,Um grande polo tecnológico condiciona sua instalação na cidade à construção de uma linha dedicada.
+P043,Interferência nas Comunicações,[Elétrica],Gestão,Ruído eletromagnético próximo à torre municipal prejudica o rádio da guarda e da defesa civil.
+P044,Risco de Choque em Feiras Livres,[Elétrica],Segurança,Ligações provisórias sem aterramento nas barracas oferecem risco grave aos feirantes e clientes.
+P045,Semáforos Apagando na Chuva,[Elétrica] [Automação],Mobilidade,"Infiltração nos quadros de comando desliga os sinais de trânsito a cada temporal, travando a cidade."
+P046,Usina Solar Municipal Parada,[Elétrica] [Ambiental],Energia,Os painéis fotovoltaicos instalados no prédio público estão desligados por falha nos inversores.
+P047,Fraudes Elétricas em Galpões,[Elétrica],Energia,Perdas não técnicas elevadas na zona industrial encarecem a tarifa para os consumidores regulares.
+P048,Indústrias Exigem Energia Limpa,[Elétrica] [Ambiental],Indústria,Fábricas exportadoras ameaçam deixar o município se não houver certificação de energia renovável.
+P049,Fiação Aérea vs. Arborização,[Elétrica] [Ambiental],Infraestrutura,"Galhos de árvores encostam na rede de média tensão, causando curtos-circuitos e podas drásticas."
+P050,Aquecimento Caro das Piscinas,[Elétrica] [Mecânica],Lazer,As resistências elétricas das piscinas olímpicas municipais geram custo insustentável no inverno.
+P051,Semáforos com Tempos Fixos,[Automação],Mobilidade,Avenidas principais ficam congestionadas enquanto ruas transversais vazias recebem sinal verde.
+P052,40% de Perda na Rede de Água,[Automação] [Ambiental],Saneamento,Vazamentos subterrâneos invisíveis desperdiçam quase metade da água tratada antes de chegar às casas.
+P053,Rios sem Monitoramento de Nível,[Automação] [Ambiental],Clima,A prefeitura só descobre que o rio transbordou quando a água já invadiu as avenidas.
+P054,Alertas Lentos da Defesa Civil,[Automação],Segurança,Moradores de encostas não recebem avisos antecipados de chuva forte por falta de sistema integrado.
+P055,Caos no Estacionamento Central,[Automação],Mobilidade,"Motoristas rodam quarteirões procurando vagas livres, aumentando o trânsito e as emissões no centro."
+P056,Ônibus sem Previsão de Horário,[Automação],Mobilidade,Passageiros abandonam o transporte coletivo por não saberem quanto tempo falta para o ônibus passar.
+P057,Câmeras Cegas no Período Noturno,[Automação],Segurança,A central de monitoramento possui câmeras analógicas antigas que não identificam placas ou rostos à noite.
+P058,Rotas Ineficientes da Coleta,[Automação] [Ambiental],Resíduos,Caminhões percorrem bairros com caçambas vazias enquanto lixeiras do centro transbordam.
+P059,Exclusão Digital na Periferia,[Automação],Educação,"Praças e escolas dos bairros afastados não possuem acesso à internet, limitando serviços digitais."
+P060,Prédios Acesos de Madrugada,[Automação] [Elétrica],Energia,Repartições públicas mantêm luzes e ar-condicionado ligados fora do expediente por falta de controle.
+P061,Ataque Cibernético na Prefeitura,[Automação],Gestão,Um ransomware travou o agendamento de consultas médicas e a emissão de guias de impostos.
+P062,Cruzamentos sem Radares Inteligentes,[Automação],Segurança,Alto índice de atropelamentos em avenidas largas por falta de faixas de pedestres automatizadas.
+P063,Dosagem Manual na ETA,[Automação] [Ambiental],Saneamento,"Operadores dosam produtos químicos manualmente na estação de água, gerando desperdício e variação na qualidade."
+P064,Polo Industrial sem Sensores de Ar,[Automação] [Ambiental],Indústria,A fiscalização não consegue identificar qual fábrica emite gases tóxicos durante a madrugada.
+P065,Filas nos Postos de Saúde,[Automação],Saúde,A falta de prontuário eletrônico integrado obriga pacientes a repetirem exames e enfrentarem filas.
+P066,Irrigação Ligada na Chuva,[Automação] [Ambiental],Lazer,Os aspersores dos parques municipais disparam por timer fixo mesmo durante tempestades.
+P067,Acesso Descontrolado nas Escolas,[Automação],Segurança,Portarias das escolas municipais carecem de controle eletrônico de entrada e saída de visitantes.
+P068,Falta de Dados sobre Turismo,[Automação],Turismo,O comércio local não sabe os horários e perfis dos visitantes por ausência de contagem de fluxo.
+P069,Postes Acesos em Pleno Dia,[Automação] [Elétrica],Energia,Falhas nos relés fotocélula mantêm milhares de luminárias ligadas sob o sol forte.
+P070,Balanças Rodoviárias Desativadas,[Automação] [Mecânica],Infraestrutura,"Sem pesagem em movimento, caminhões sobrecarregados cruzam viadutos sem fiscalização."
+P071,Falhas Ocultas na Rede Subterrânea,[Automação] [Elétrica],Energia,Equipes levam dias escavando calçadas para encontrar curtos-circuitos na rede enterrada do centro.
+P072,Furto de Bicicletas Compartilhadas,[Automação],Mobilidade,Travas mecânicas simples nas estações facilitam o vandalismo e o roubo do patrimônio público.
+P073,Balcões de Atendimento Lotados,[Automação],Gestão,Cidadãos perdem horas em filas presenciais para resolver serviços simples por falta de totens digitais.
+P074,Ambulâncias Presas no Trânsito,[Automação],Saúde,O tempo de resposta do resgate médico dobrou porque os semáforos não abrem onda verde para emergências.
+P075,Monitoramento Lento de Encostas,[Automação] [Ambiental],Clima,Vistorias visuais demoram dias para detectar movimentação de solo em morros habitados.
+P076,Esgoto In Natura no Rio Principal,[Ambiental],Saneamento,Um bairro recém-expandido despeja esgoto doméstico direto no rio que corta a cidade.
+P077,Ilhas de Calor no Centro Urbano,[Ambiental],Clima,A falta de árvores e o excesso de concreto elevam a temperatura central em 5°C acima dos bairros.
+P078,Entulho Entupindo Galerias Pluviais,[Ambiental],Resíduos,O descarte clandestino de restos de obra bloqueia bueiros e agrava os alagamentos urbanos.
+P079,Reservatório em Nível Crítico (25%),[Ambiental],Saneamento,Uma estiagem prolongada ameaça deixar a população sob racionamento severo nas próximas semanas.
+P080,Algas Tóxicas na Represa,[Ambiental],Saneamento,"O excesso de matéria orgânica provocou floração de cianobactérias, deixando a água com gosto e odor ruins."
+P081,Reciclagem Estagnada Abaixo de 3%,[Ambiental],Resíduos,Quase todo o lixo reciclável da cidade acaba enterrado por falta de coleta seletiva estruturada.
+P082,Aterro Sanitário no Limite,[Ambiental],Resíduos,A licença ambiental e o espaço físico do aterro municipal se esgotam nos próximos meses.
+P083,Solo Impermeável e Enchentes,[Ambiental],Clima,A urbanização acelerada sem áreas de absorção faz qualquer chuva moderada inundar avenidas baixas.
+P084,Desmatamento nas Nascentes,[Ambiental],Clima,Invasões irregulares avançam sobre a mata ciliar que protege os mananciais de abastecimento.
+P085,Chorume e Odor nas Feiras Livres,[Ambiental],Resíduos,"Toneladas de restos orgânicos de mercados vão para o aterro comum, gerando gás metano e mau cheiro."
+P086,Ar Poluído nos Corredores de Ônibus,[Ambiental] ,Saúde,Índices de material particulado nas avenidas centrais ultrapassam o limite seguro da OMS.
+P087,Lixo Eletrônico no Lixo Comum,[Ambiental],Resíduos,"Pilhas, baterias e celulares descartados incorretamente contaminam o solo com metais pesados."
+P088,Erosão Ameaçando Casas Ribeirinhas,[Ambiental],Infraestrutura,O assoreamento e a força da correnteza estão solapando as margens do ribeirão em área habitada.
+P089,Zona Norte sem Parques Públicos,[Ambiental],Lazer,O distrito mais populoso da cidade não possui nenhuma área verde de lazer para os moradores.
+P090,Solo Contaminado em Antiga Fábrica,[Ambiental],Indústria,Um terreno industrial abandonado no centro impede novos projetos devido à contaminação química do lençol.
+P091,Mortandade de Peixes no Lago,[Ambiental],Saneamento,O despejo clandestino de efluentes industriais durante a madrugada matou a fauna do parque municipal.
+P092,Terrenos Baldios e Surto de Vetores,[Ambiental],Saúde,Acúmulo de água parada e mato alto em lotes privados abandonados dispara casos de dengue.
+P093,Fumaça de Queimadas no Entorno,[Ambiental],Clima,Incêndios na vegetação seca periférica cobrem a cidade de fuligem e lotam os prontos-socorros.
+P094,Acúmulo de Lodo de Esgoto,[Ambiental],Saneamento,A estação de tratamento gera toneladas de lodo biológico sem destinação sustentável definida.
+P095,Pressão Imobiliária em Área de Várzea,[Ambiental],Gestão,Construtoras pressionam pela liberação de condomínios em zona úmida vital para amortecer cheias.
+P096,Obras Viárias sem Drenagem Verde,[Ambiental],Infraestrutura,"Novas avenidas estão sendo projetadas apenas com asfalto convencional, sem jardins de chuva ou piso drenante."
+P097,Óleo de Cozinha Entupindo Esgotos,[Ambiental],Saneamento,O descarte doméstico de gordura nas pias causa extravasamentos frequentes na rede coletora.
+P098,Chuva Ácida no Centro Histórico,[Ambiental] [Automação],Infraestrutura,Emissões industriais estão corroendo fachadas históricas e monumentos de pedra da cidade.
+P099,Escassez Hídrica no Cinturão Verde,[Ambiental],Saneamento,Agricultores familiares que abastecem as escolas sofrem perdas na safra por falta de reuso de água.
+P100,Lixo Farmacêutico sem Segregação,[Ambiental],Saúde,Medicamentos vencidos e seringas dos postos de saúde estão sendo misturados aos resíduos comuns.

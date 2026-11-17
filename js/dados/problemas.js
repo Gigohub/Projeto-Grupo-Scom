@@ -23,7 +23,9 @@ export const DISCIPLINAS = [
 export const PROBLEMAS = [
   {
     "id": "P001",
-    "enunciado": "",
+    "titulo": "Fumaça Preta na Frota Municipal",
+    "setor": "Mobilidade",
+    "descricao": "Ônibus antigos operam com motores desregulados, gerando queixas de poluição e multas ambientais.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -69,7 +71,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P002",
-    "enunciado": "",
+    "titulo": "Terminais sem Acessibilidade",
+    "setor": "Mobilidade",
+    "descricao": "Elevadores e escadas rolantes das estações de integração estão parados há meses por falta de peças.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -115,7 +119,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P003",
-    "enunciado": "",
+    "titulo": "Falhas nos Caminhões de Lixo",
+    "setor": "Resíduos",
+    "descricao": "O sistema hidráulico dos caminhões compactadores quebra constantemente, atrasando a coleta nos bairros.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -161,7 +167,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P004",
-    "enunciado": "",
+    "titulo": "Fadiga em Ponte Metálica",
+    "setor": "Infraestrutura",
+    "descricao": "Inspeção técnica apontou vibração excessiva e corrosão nos apoios da principal ponte do centro.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -207,7 +215,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P005",
-    "enunciado": "",
+    "titulo": "Falta de Dragas para Córregos",
+    "setor": "Clima",
+    "descricao": "O período de chuvas se aproxima e a prefeitura não possui maquinário pesado para desassorear os rios.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -253,7 +263,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P006",
-    "enunciado": "",
+    "titulo": "Climatização Hospitalar Obsoleta",
+    "setor": "Saúde",
+    "descricao": "Os chillers do hospital municipal consomem energia em excesso e falham em dias de calor extremo.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -299,7 +311,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P007",
-    "enunciado": "",
+    "titulo": "Oficina Municipal Sucateada",
+    "setor": "Gestão",
+    "descricao": "A garagem da prefeitura demora semanas para reparar veículos oficiais por falta de ferramentas modernas.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -345,7 +359,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P008",
-    "enunciado": "",
+    "titulo": "Desgaste Prematuro nos Trilhos",
+    "setor": "Mobilidade",
+    "descricao": "O VLT urbano apresenta atrito anormal nas curvas, exigindo redução de velocidade e atrasando viagens.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -391,7 +407,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P009",
-    "enunciado": "",
+    "titulo": "Ruído Industrial nos Bairros",
+    "setor": "Indústria",
+    "descricao": "Máquinas pesadas do distrito industrial operam à noite sem isolamento acústico, gerando protestos.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -437,7 +455,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P010",
-    "enunciado": "",
+    "titulo": "Bombas de Água no Limite",
+    "setor": "Saneamento",
+    "descricao": "As bombas de recalque da estação principal operam superaquecidas e correm risco de colapso mecânico.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -483,7 +503,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P011",
-    "enunciado": "",
+    "titulo": "Ambulâncias Indisponíveis",
+    "setor": "Saúde",
+    "descricao": "Metade da frota de emergência está parada aguardando retífica de motores e troca de suspensão.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -529,7 +551,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P012",
-    "enunciado": "",
+    "titulo": "Asfalto Destruído por Cargas",
+    "setor": "Infraestrutura",
+    "descricao": "Caminhões com excesso de peso afundam o pavimento das vias de escoamento agrícola toda semana.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -575,7 +599,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P013",
-    "enunciado": "",
+    "titulo": "Caldeiras Defeituosas em Creches",
+    "setor": "Educação",
+    "descricao": "O sistema de aquecimento de água das creches apresenta vazamentos e risco de ruptura.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -621,7 +647,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P014",
-    "enunciado": "",
+    "titulo": "Teleférico Turístico Interditado",
+    "setor": "Turismo",
+    "descricao": "Desgaste nos cabos de tração obrigou o fechamento da principal atração turística da serra.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -667,7 +695,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P015",
-    "enunciado": "",
+    "titulo": "Balsa Fluvial em Ritmo Lento",
+    "setor": "Mobilidade",
+    "descricao": "A travessia entre distritos opera com apenas um motor auxiliar, formando filas quilométricas de carros.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -713,7 +743,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P016",
-    "enunciado": "",
+    "titulo": "Ônibus sem Plataformas Elevatórias",
+    "setor": "Mobilidade",
+    "descricao": "Pessoas com deficiência enfrentam barreiras diárias porque os elevadores dos ônibus emperram.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -759,7 +791,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P017",
-    "enunciado": "",
+    "titulo": "Comportas de Contenção Travadas",
+    "setor": "Clima",
+    "descricao": "A oxidação travou o mecanismo de abertura das comportas da represa de contenção de cheias.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -805,7 +839,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P018",
-    "enunciado": "",
+    "titulo": "Aluguel Caro de Máquinas Pesadas",
+    "setor": "Gestão",
+    "descricao": "A secretaria de obras gasta fortuna alugando escavadeiras por não ter frota própria operacional.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -851,7 +887,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P019",
-    "enunciado": "",
+    "titulo": "Vazamento de Óleo na Garagem",
+    "setor": "Resíduos",
+    "descricao": "O descarte precário de lubrificantes na oficina municipal está contaminando o solo e as galerias.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -897,7 +935,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P020",
-    "enunciado": "",
+    "titulo": "Ventilação Precária nos Túneis",
+    "setor": "Mobilidade",
+    "descricao": "Exaustores dos túneis rodoviários operam abaixo da vazão mínima, acumulando monóxido de carbono.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -943,7 +983,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P021",
-    "enunciado": "",
+    "titulo": "Parques com Aparelhos Enferrujados",
+    "setor": "Lazer",
+    "descricao": "Academias ao ar livre e brinquedos infantis apresentam ferrugem e pontas cortantes por falta de manutenção.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -989,7 +1031,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P022",
-    "enunciado": "",
+    "titulo": "Incinerador Hospitalar Inoperante",
+    "setor": "Saúde",
+    "descricao": "Falha mecânica na câmara de combustão paralisou o tratamento local de resíduos infectantes.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1035,7 +1079,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P023",
-    "enunciado": "",
+    "titulo": "Bicicletas Públicas Quebradas",
+    "setor": "Mobilidade",
+    "descricao": "Alto índice de falha nos freios e correntes reduziu pela metade o uso das bicicletas compartilhadas.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1081,7 +1127,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P024",
-    "enunciado": "",
+    "titulo": "Sirenes de Encosta Inoperantes",
+    "setor": "Segurança",
+    "descricao": "Os mecanismos de acionamento das sirenes de alerta de deslizamento falharam no último teste.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1127,7 +1175,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P025",
-    "enunciado": "",
+    "titulo": "Acúmulo de Sucata Metálica",
+    "setor": "Resíduos",
+    "descricao": "O pátio municipal está lotado de carcaças e cavacos sem prensa hidráulica para compactação.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1173,7 +1223,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P026",
-    "enunciado": "",
+    "titulo": "Apagões no Centro Comercial",
+    "setor": "Energia",
+    "descricao": "Quedas de energia diárias no horário de pico geram prejuízos ao comércio e revolta dos lojistas.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1219,7 +1271,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P027",
-    "enunciado": "",
+    "titulo": "Furto Recorrente de Cabos",
+    "setor": "Energia",
+    "descricao": "Bairros inteiros ficam às escuras toda semana devido ao roubo de fios de cobre da rede pública.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1265,7 +1319,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P028",
-    "enunciado": "",
+    "titulo": "Conta de Luz da Prefeitura Explodindo",
+    "setor": "Gestão",
+    "descricao": "O gasto energético dos prédios administrativos consome parcela crítica do orçamento mensal.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1311,7 +1367,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P029",
-    "enunciado": "",
+    "titulo": "Emaranhado de Fios Clandestinos",
+    "setor": "Energia",
+    "descricao": "Ligações irregulares (\"gatos\") sobrecarregam transformadores e provocam incêndios em postes.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1357,7 +1415,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P030",
-    "enunciado": "",
+    "titulo": "Hospital sem Backup Energético",
+    "setor": "Saúde",
+    "descricao": "Os geradores de emergência do pronto-socorro não suportam a carga total do centro cirúrgico.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1403,7 +1463,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P031",
-    "enunciado": "",
+    "titulo": "Falta de Eletropostos na Cidade",
+    "setor": "Energia",
+    "descricao": "Empresas recusam-se a eletrificar frotas locais por ausência de infraestrutura de recarga rápida.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1449,7 +1511,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P032",
-    "enunciado": "",
+    "titulo": "Praças Escuras e Inseguras",
+    "setor": "Segurança",
+    "descricao": "Lâmpadas queimadas e postes antigos transformaram parques centrais em zonas de criminalidade noturna.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1495,7 +1559,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P033",
-    "enunciado": "",
+    "titulo": "Subestação da Zona Leste no Limite",
+    "setor": "Energia",
+    "descricao": "Transformadores operam em temperatura crítica devido à expansão acelerada de novos condomínios.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1541,7 +1607,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P034",
-    "enunciado": "",
+    "titulo": "Oscilações de Tensão no Comércio",
+    "setor": "Energia",
+    "descricao": "Picos na rede elétrica estão queimando freezers e computadores de pequenos empreendedores.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1587,7 +1655,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P035",
-    "enunciado": "",
+    "titulo": "Ginásios sem Jogos Noturnos",
+    "setor": "Lazer",
+    "descricao": "Refletores antigos queimaram e os torneios esportivos noturnos da cidade foram cancelados.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1633,7 +1703,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P036",
-    "enunciado": "",
+    "titulo": "Comunidade Rural sem Eletricidade",
+    "setor": "Energia",
+    "descricao": "Produtores agrícolas do distrito norte ainda dependem de geradores a diesel por falta de rede elétrica.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1679,7 +1751,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P037",
-    "enunciado": "",
+    "titulo": "Postes de Madeira em Risco",
+    "setor": "Infraestrutura",
+    "descricao": "Tempestades de vento ameaçam derrubar postes antigos apodrecidos, cortando energia e bloqueando ruas.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1725,7 +1799,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P038",
-    "enunciado": "",
+    "titulo": "Escolas sem Capacidade Elétrica",
+    "setor": "Educação",
+    "descricao": "A fiação interna das escolas não suporta a instalação de ventiladores ou aparelhos de ar-condicionado.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1771,7 +1847,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P039",
-    "enunciado": "",
+    "titulo": "Multas por Baixo Fator de Potência",
+    "setor": "Gestão",
+    "descricao": "A concessionária está multando a prefeitura mensalmente pela ineficiência reativa dos prédios públicos.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1817,7 +1895,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P040",
-    "enunciado": "",
+    "titulo": "Prédios Históricos sem Para-Raios",
+    "setor": "Infraestrutura",
+    "descricao": "Museus e casarões tombados estão desprotegidos contra descargas atmosféricas severas.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1863,7 +1943,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P041",
-    "enunciado": "",
+    "titulo": "Poluição Luminosa no Centro",
+    "setor": "Energia",
+    "descricao": "Refletores mal direcionados desperdiçam energia e perturbam a fauna noturna e moradores.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1909,7 +1991,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P042",
-    "enunciado": "",
+    "titulo": "Exigência de Linha de Alta Tensão",
+    "setor": "Indústria",
+    "descricao": "Um grande polo tecnológico condiciona sua instalação na cidade à construção de uma linha dedicada.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -1955,7 +2039,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P043",
-    "enunciado": "",
+    "titulo": "Interferência nas Comunicações",
+    "setor": "Gestão",
+    "descricao": "Ruído eletromagnético próximo à torre municipal prejudica o rádio da guarda e da defesa civil.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2001,7 +2087,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P044",
-    "enunciado": "",
+    "titulo": "Risco de Choque em Feiras Livres",
+    "setor": "Segurança",
+    "descricao": "Ligações provisórias sem aterramento nas barracas oferecem risco grave aos feirantes e clientes.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2047,7 +2135,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P045",
-    "enunciado": "",
+    "titulo": "Semáforos Apagando na Chuva",
+    "setor": "Mobilidade",
+    "descricao": "Infiltração nos quadros de comando desliga os sinais de trânsito a cada temporal, travando a cidade.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2093,7 +2183,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P046",
-    "enunciado": "",
+    "titulo": "Usina Solar Municipal Parada",
+    "setor": "Energia",
+    "descricao": "Os painéis fotovoltaicos instalados no prédio público estão desligados por falha nos inversores.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2139,7 +2231,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P047",
-    "enunciado": "",
+    "titulo": "Fraudes Elétricas em Galpões",
+    "setor": "Energia",
+    "descricao": "Perdas não técnicas elevadas na zona industrial encarecem a tarifa para os consumidores regulares.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2185,7 +2279,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P048",
-    "enunciado": "",
+    "titulo": "Indústrias Exigem Energia Limpa",
+    "setor": "Indústria",
+    "descricao": "Fábricas exportadoras ameaçam deixar o município se não houver certificação de energia renovável.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2231,7 +2327,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P049",
-    "enunciado": "",
+    "titulo": "Fiação Aérea vs. Arborização",
+    "setor": "Infraestrutura",
+    "descricao": "Galhos de árvores encostam na rede de média tensão, causando curtos-circuitos e podas drásticas.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2277,7 +2375,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P050",
-    "enunciado": "",
+    "titulo": "Aquecimento Caro das Piscinas",
+    "setor": "Lazer",
+    "descricao": "As resistências elétricas das piscinas olímpicas municipais geram custo insustentável no inverno.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2323,7 +2423,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P051",
-    "enunciado": "",
+    "titulo": "Semáforos com Tempos Fixos",
+    "setor": "Mobilidade",
+    "descricao": "Avenidas principais ficam congestionadas enquanto ruas transversais vazias recebem sinal verde.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2369,7 +2471,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P052",
-    "enunciado": "",
+    "titulo": "40% de Perda na Rede de Água",
+    "setor": "Saneamento",
+    "descricao": "Vazamentos subterrâneos invisíveis desperdiçam quase metade da água tratada antes de chegar às casas.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2415,7 +2519,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P053",
-    "enunciado": "",
+    "titulo": "Rios sem Monitoramento de Nível",
+    "setor": "Clima",
+    "descricao": "A prefeitura só descobre que o rio transbordou quando a água já invadiu as avenidas.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2461,7 +2567,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P054",
-    "enunciado": "",
+    "titulo": "Alertas Lentos da Defesa Civil",
+    "setor": "Segurança",
+    "descricao": "Moradores de encostas não recebem avisos antecipados de chuva forte por falta de sistema integrado.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2507,7 +2615,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P055",
-    "enunciado": "",
+    "titulo": "Caos no Estacionamento Central",
+    "setor": "Mobilidade",
+    "descricao": "Motoristas rodam quarteirões procurando vagas livres, aumentando o trânsito e as emissões no centro.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2553,7 +2663,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P056",
-    "enunciado": "",
+    "titulo": "Ônibus sem Previsão de Horário",
+    "setor": "Mobilidade",
+    "descricao": "Passageiros abandonam o transporte coletivo por não saberem quanto tempo falta para o ônibus passar.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2599,7 +2711,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P057",
-    "enunciado": "",
+    "titulo": "Câmeras Cegas no Período Noturno",
+    "setor": "Segurança",
+    "descricao": "A central de monitoramento possui câmeras analógicas antigas que não identificam placas ou rostos à noite.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2645,7 +2759,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P058",
-    "enunciado": "",
+    "titulo": "Rotas Ineficientes da Coleta",
+    "setor": "Resíduos",
+    "descricao": "Caminhões percorrem bairros com caçambas vazias enquanto lixeiras do centro transbordam.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2691,7 +2807,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P059",
-    "enunciado": "",
+    "titulo": "Exclusão Digital na Periferia",
+    "setor": "Educação",
+    "descricao": "Praças e escolas dos bairros afastados não possuem acesso à internet, limitando serviços digitais.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2737,7 +2855,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P060",
-    "enunciado": "",
+    "titulo": "Prédios Acesos de Madrugada",
+    "setor": "Energia",
+    "descricao": "Repartições públicas mantêm luzes e ar-condicionado ligados fora do expediente por falta de controle.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2783,7 +2903,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P061",
-    "enunciado": "",
+    "titulo": "Ataque Cibernético na Prefeitura",
+    "setor": "Gestão",
+    "descricao": "Um ransomware travou o agendamento de consultas médicas e a emissão de guias de impostos.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2829,7 +2951,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P062",
-    "enunciado": "",
+    "titulo": "Cruzamentos sem Radares Inteligentes",
+    "setor": "Segurança",
+    "descricao": "Alto índice de atropelamentos em avenidas largas por falta de faixas de pedestres automatizadas.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2875,7 +2999,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P063",
-    "enunciado": "",
+    "titulo": "Dosagem Manual na ETA",
+    "setor": "Saneamento",
+    "descricao": "Operadores dosam produtos químicos manualmente na estação de água, gerando desperdício e variação na qualidade.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2921,7 +3047,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P064",
-    "enunciado": "",
+    "titulo": "Polo Industrial sem Sensores de Ar",
+    "setor": "Indústria",
+    "descricao": "A fiscalização não consegue identificar qual fábrica emite gases tóxicos durante a madrugada.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -2967,7 +3095,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P065",
-    "enunciado": "",
+    "titulo": "Filas nos Postos de Saúde",
+    "setor": "Saúde",
+    "descricao": "A falta de prontuário eletrônico integrado obriga pacientes a repetirem exames e enfrentarem filas.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3013,7 +3143,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P066",
-    "enunciado": "",
+    "titulo": "Irrigação Ligada na Chuva",
+    "setor": "Lazer",
+    "descricao": "Os aspersores dos parques municipais disparam por timer fixo mesmo durante tempestades.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3059,7 +3191,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P067",
-    "enunciado": "",
+    "titulo": "Acesso Descontrolado nas Escolas",
+    "setor": "Segurança",
+    "descricao": "Portarias das escolas municipais carecem de controle eletrônico de entrada e saída de visitantes.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3105,7 +3239,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P068",
-    "enunciado": "",
+    "titulo": "Falta de Dados sobre Turismo",
+    "setor": "Turismo",
+    "descricao": "O comércio local não sabe os horários e perfis dos visitantes por ausência de contagem de fluxo.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3151,7 +3287,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P069",
-    "enunciado": "",
+    "titulo": "Postes Acesos em Pleno Dia",
+    "setor": "Energia",
+    "descricao": "Falhas nos relés fotocélula mantêm milhares de luminárias ligadas sob o sol forte.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3197,7 +3335,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P070",
-    "enunciado": "",
+    "titulo": "Balanças Rodoviárias Desativadas",
+    "setor": "Infraestrutura",
+    "descricao": "Sem pesagem em movimento, caminhões sobrecarregados cruzam viadutos sem fiscalização.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3243,7 +3383,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P071",
-    "enunciado": "",
+    "titulo": "Falhas Ocultas na Rede Subterrânea",
+    "setor": "Energia",
+    "descricao": "Equipes levam dias escavando calçadas para encontrar curtos-circuitos na rede enterrada do centro.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3289,7 +3431,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P072",
-    "enunciado": "",
+    "titulo": "Furto de Bicicletas Compartilhadas",
+    "setor": "Mobilidade",
+    "descricao": "Travas mecânicas simples nas estações facilitam o vandalismo e o roubo do patrimônio público.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3335,7 +3479,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P073",
-    "enunciado": "",
+    "titulo": "Balcões de Atendimento Lotados",
+    "setor": "Gestão",
+    "descricao": "Cidadãos perdem horas em filas presenciais para resolver serviços simples por falta de totens digitais.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3381,7 +3527,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P074",
-    "enunciado": "",
+    "titulo": "Ambulâncias Presas no Trânsito",
+    "setor": "Saúde",
+    "descricao": "O tempo de resposta do resgate médico dobrou porque os semáforos não abrem onda verde para emergências.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3427,7 +3575,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P075",
-    "enunciado": "",
+    "titulo": "Monitoramento Lento de Encostas",
+    "setor": "Clima",
+    "descricao": "Vistorias visuais demoram dias para detectar movimentação de solo em morros habitados.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3473,7 +3623,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P076",
-    "enunciado": "",
+    "titulo": "Esgoto In Natura no Rio Principal",
+    "setor": "Saneamento",
+    "descricao": "Um bairro recém-expandido despeja esgoto doméstico direto no rio que corta a cidade.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3519,7 +3671,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P077",
-    "enunciado": "",
+    "titulo": "Ilhas de Calor no Centro Urbano",
+    "setor": "Clima",
+    "descricao": "A falta de árvores e o excesso de concreto elevam a temperatura central em 5°C acima dos bairros.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3565,7 +3719,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P078",
-    "enunciado": "",
+    "titulo": "Entulho Entupindo Galerias Pluviais",
+    "setor": "Resíduos",
+    "descricao": "O descarte clandestino de restos de obra bloqueia bueiros e agrava os alagamentos urbanos.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3611,7 +3767,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P079",
-    "enunciado": "",
+    "titulo": "Reservatório em Nível Crítico (25%)",
+    "setor": "Saneamento",
+    "descricao": "Uma estiagem prolongada ameaça deixar a população sob racionamento severo nas próximas semanas.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3657,7 +3815,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P080",
-    "enunciado": "",
+    "titulo": "Algas Tóxicas na Represa",
+    "setor": "Saneamento",
+    "descricao": "O excesso de matéria orgânica provocou floração de cianobactérias, deixando a água com gosto e odor ruins.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3703,7 +3863,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P081",
-    "enunciado": "",
+    "titulo": "Reciclagem Estagnada Abaixo de 3%",
+    "setor": "Resíduos",
+    "descricao": "Quase todo o lixo reciclável da cidade acaba enterrado por falta de coleta seletiva estruturada.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3749,7 +3911,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P082",
-    "enunciado": "",
+    "titulo": "Aterro Sanitário no Limite",
+    "setor": "Resíduos",
+    "descricao": "A licença ambiental e o espaço físico do aterro municipal se esgotam nos próximos meses.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3795,7 +3959,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P083",
-    "enunciado": "",
+    "titulo": "Solo Impermeável e Enchentes",
+    "setor": "Clima",
+    "descricao": "A urbanização acelerada sem áreas de absorção faz qualquer chuva moderada inundar avenidas baixas.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3841,7 +4007,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P084",
-    "enunciado": "",
+    "titulo": "Desmatamento nas Nascentes",
+    "setor": "Clima",
+    "descricao": "Invasões irregulares avançam sobre a mata ciliar que protege os mananciais de abastecimento.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3887,7 +4055,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P085",
-    "enunciado": "",
+    "titulo": "Chorume e Odor nas Feiras Livres",
+    "setor": "Resíduos",
+    "descricao": "Toneladas de restos orgânicos de mercados vão para o aterro comum, gerando gás metano e mau cheiro.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3933,7 +4103,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P086",
-    "enunciado": "",
+    "titulo": "Ar Poluído nos Corredores de Ônibus",
+    "setor": "Saúde",
+    "descricao": "Índices de material particulado nas avenidas centrais ultrapassam o limite seguro da OMS.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -3979,7 +4151,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P087",
-    "enunciado": "",
+    "titulo": "Lixo Eletrônico no Lixo Comum",
+    "setor": "Resíduos",
+    "descricao": "Pilhas, baterias e celulares descartados incorretamente contaminam o solo com metais pesados.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -4025,7 +4199,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P088",
-    "enunciado": "",
+    "titulo": "Erosão Ameaçando Casas Ribeirinhas",
+    "setor": "Infraestrutura",
+    "descricao": "O assoreamento e a força da correnteza estão solapando as margens do ribeirão em área habitada.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -4071,7 +4247,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P089",
-    "enunciado": "",
+    "titulo": "Zona Norte sem Parques Públicos",
+    "setor": "Lazer",
+    "descricao": "O distrito mais populoso da cidade não possui nenhuma área verde de lazer para os moradores.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -4117,7 +4295,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P090",
-    "enunciado": "",
+    "titulo": "Solo Contaminado em Antiga Fábrica",
+    "setor": "Indústria",
+    "descricao": "Um terreno industrial abandonado no centro impede novos projetos devido à contaminação química do lençol.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -4163,7 +4343,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P091",
-    "enunciado": "",
+    "titulo": "Mortandade de Peixes no Lago",
+    "setor": "Saneamento",
+    "descricao": "O despejo clandestino de efluentes industriais durante a madrugada matou a fauna do parque municipal.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -4209,7 +4391,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P092",
-    "enunciado": "",
+    "titulo": "Terrenos Baldios e Surto de Vetores",
+    "setor": "Saúde",
+    "descricao": "Acúmulo de água parada e mato alto em lotes privados abandonados dispara casos de dengue.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -4255,7 +4439,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P093",
-    "enunciado": "",
+    "titulo": "Fumaça de Queimadas no Entorno",
+    "setor": "Clima",
+    "descricao": "Incêndios na vegetação seca periférica cobrem a cidade de fuligem e lotam os prontos-socorros.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -4301,7 +4487,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P094",
-    "enunciado": "",
+    "titulo": "Acúmulo de Lodo de Esgoto",
+    "setor": "Saneamento",
+    "descricao": "A estação de tratamento gera toneladas de lodo biológico sem destinação sustentável definida.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -4347,7 +4535,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P095",
-    "enunciado": "",
+    "titulo": "Pressão Imobiliária em Área de Várzea",
+    "setor": "Gestão",
+    "descricao": "Construtoras pressionam pela liberação de condomínios em zona úmida vital para amortecer cheias.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -4393,7 +4583,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P096",
-    "enunciado": "",
+    "titulo": "Obras Viárias sem Drenagem Verde",
+    "setor": "Infraestrutura",
+    "descricao": "Novas avenidas estão sendo projetadas apenas com asfalto convencional, sem jardins de chuva ou piso drenante.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -4439,7 +4631,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P097",
-    "enunciado": "",
+    "titulo": "Óleo de Cozinha Entupindo Esgotos",
+    "setor": "Saneamento",
+    "descricao": "O descarte doméstico de gordura nas pias causa extravasamentos frequentes na rede coletora.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -4485,7 +4679,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P098",
-    "enunciado": "",
+    "titulo": "Chuva Ácida no Centro Histórico",
+    "setor": "Infraestrutura",
+    "descricao": "Emissões industriais estão corroendo fachadas históricas e monumentos de pedra da cidade.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -4531,7 +4727,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P099",
-    "enunciado": "",
+    "titulo": "Escassez Hídrica no Cinturão Verde",
+    "setor": "Saneamento",
+    "descricao": "Agricultores familiares que abastecem as escolas sofrem perdas na safra por falta de reuso de água.",
     "solucoes": [
       {
         "disciplina": "ambiental",
@@ -4577,7 +4775,9 @@ export const PROBLEMAS = [
   },
   {
     "id": "P100",
-    "enunciado": "",
+    "titulo": "Lixo Farmacêutico sem Segregação",
+    "setor": "Saúde",
+    "descricao": "Medicamentos vencidos e seringas dos postos de saúde estão sendo misturados aos resíduos comuns.",
     "solucoes": [
       {
         "disciplina": "ambiental",

@@ -22,12 +22,16 @@ arquivo é aberto com duplo clique. Use um servidor local:
 
 ## Como editar os problemas e soluções
 
-1. Edite os CSVs em `dados-fonte/` (um arquivo por disciplina). Colunas
-   obrigatórias: `ID`, nome da disciplina (2ª coluna, com o texto da solução),
-   `Dinheiro`, `Eficiencia`, `Sustentabilidade`, `Felicidade`. Outras colunas
-   são ignoradas. Pode salvar com vírgula ou ponto e vírgula.
-   **No Excel, use "Salvar como" → "CSV UTF-8"** (o "CSV" comum estraga os
-   acentos; o conversor avisa se isso acontecer).
+1. Edite os CSVs em `dados-fonte/`:
+   - **um CSV de problemas**, com as colunas `ID`, `Título`, `Setor` e
+     `Descrição do Problema` (é reconhecido pela coluna `Título`);
+   - **um CSV por disciplina**, com as soluções. Colunas obrigatórias: `ID`,
+     nome da disciplina (2ª coluna, com o texto da solução), `Dinheiro`,
+     `Eficiencia`, `Sustentabilidade`, `Felicidade`.
+
+   Os IDs (`P001`...) ligam cada problema às suas soluções. Outras colunas são
+   ignoradas, e o nome dos arquivos não importa. Pode salvar com vírgula ou
+   ponto e vírgula.
 2. Rode `npm run converter` para gerar `js/dados/problemas.js`.
 3. Rode `npm test` para conferir se está tudo consistente.
 
@@ -49,3 +53,9 @@ npm test
 | `dados-fonte/` | CSVs editáveis — a fonte dos dados |
 | `ferramentas/` | Conversor de CSV (e, depois, o simulador de balanceamento) |
 | `testes/` | Testes automatizados (`node --test`) |
+| `index.html` | Página do jogo |
+| `css/estilo.css` | Aparência (cores, cartas, painel) |
+| `js/main.js` | Liga o motor, as telas e o salvamento |
+| `js/motor/` | Regras do jogo, sem tela (estado, turno, fim) — testáveis no Node |
+| `js/interface/` | Desenho das telas (inicial, do dia, final) |
+| `js/salvamento.js` | Guarda a partida no navegador (localStorage) |

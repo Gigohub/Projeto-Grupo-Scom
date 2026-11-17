@@ -23,7 +23,9 @@ const EFEITOS = {
 // 40 problemas: T001, T002, ..., T040
 const PROBLEMAS_TESTE = Array.from({ length: 40 }, (_, i) => ({
   id: 'T' + String(i + 1).padStart(3, '0'),
-  enunciado: '',
+  titulo: 'Problema de teste',
+  setor: 'Teste',
+  descricao: '',
   solucoes: Object.entries(EFEITOS).map(([disciplina, efeitos]) => ({
     disciplina,
     texto: 'Solução ' + disciplina,

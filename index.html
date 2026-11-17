@@ -4,26 +4,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Jogo de Engenharia Urbana</title>
+    <meta name="description" content="Jogo de cartas: resolva os problemas da cidade com soluções de engenharia." />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <h1>Jogo de Engenharia Urbana</h1>
-    <p id="status">Carregando dados…</p>
+    <header class="topo">
+      <h1>Jogo de Engenharia Urbana</h1>
+    </header>
 
-    <!--
-      ETAPA 1: esta página só confere se os dados e a configuração carregam
-      no navegador. Na etapa 3 ela vira o jogo de verdade.
-      type="module" permite usar "import". Por isso a página precisa ser
-      aberta por um servidor (Live Server ou python -m http.server),
-      e não com duplo clique no arquivo.
-    -->
-    <script type="module">
-      import { PROBLEMAS, DISCIPLINAS } from './js/dados/problemas.js';
-      import { CONFIG } from './js/config.js';
+    <!-- As telas do jogo são desenhadas aqui dentro por js/main.js -->
+    <main id="app">
+      <p>Carregando…</p>
+      <p>
+        Se esta mensagem não sumir, o jogo foi aberto com duplo clique no
+        arquivo. Abra por um servidor local (veja o README).
+      </p>
+      <noscript>Este jogo precisa de JavaScript ativado.</noscript>
+    </main>
 
-      const nomes = DISCIPLINAS.map((d) => d.nome).join(', ');
-      document.getElementById('status').textContent =
-        `OK: ${PROBLEMAS.length} problemas carregados (${nomes}). ` +
-        `Partida de ${CONFIG.totalDias} dias com ${CONFIG.cartasPorTurno} cartas por turno.`;
-    </script>
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>
