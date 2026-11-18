@@ -1,13 +1,10 @@
-// O que acontece em cada dia: mostrar o problema e as cartas, e aplicar a
-// carta escolhida (efeito + desgaste + receita).
-//
-// Nenhuma função aqui altera o estado recebido: elas devolvem um estado NOVO.
 import { CONFIG, INDICADORES } from '../config.js';
 import { PROBLEMAS } from '../dados/problemas.js';
 import { aplicarVariacoes } from './estado.js';
 import { verificarSituacao } from './fim.js';
+import { aplicarEventos } from './eventos.js';
 
-/** Procura um problema pelo id (ex.: 'P042'). */
+
 export function buscarProblema(id, problemas = PROBLEMAS) {
   const problema = problemas.find((p) => p.id === id);
   if (!problema) {
@@ -16,10 +13,6 @@ export function buscarProblema(id, problemas = PROBLEMAS) {
   return problema;
 }
 
-/**
- * Tudo o que a tela precisa para mostrar o dia atual:
- * { dia, problema, cartas: [{ disciplina, texto, efeitos }, ...] }
- */
 export function turnoAtual(estado, { problemas = PROBLEMAS } = {}) {
   const { problemaId, cartas } = estado.dias[estado.dia - 1]; // dia 1 → posição 0
   const problema = buscarProblema(problemaId, problemas);
@@ -30,27 +23,13 @@ export function turnoAtual(estado, { problemas = PROBLEMAS } = {}) {
   };
 }
 
-/**
- * Receita do dia = base + bonusMaximo × (média de felicidade e eficiência − 50) / 50
- * Com a média em 50 → base (6). Em 100 → base + bônus (10). Em 0 → base − bônus (2).
- * O valor pode ter casas decimais (ex.: 5,2); a tela arredonda só para mostrar.
- */
 export function calcularReceita(indices) {
   const { base, bonusMaximo } = CONFIG.receita;
   const media = (indices.felicidade + indices.eficiencia) / 2;
   return base + (bonusMaximo * (media - 50)) / 50;
 }
 
-/**
- * O jogador escolheu uma carta. Devolve o estado do dia seguinte.
- * Ordem (a mesma usada na simulação que balanceou o jogo):
- *   1. efeito da carta + desgaste diário, somados e DEPOIS limitados a 0–100
- *   2. receita, calculada com os índices já atualizados
- *   3. confere falência / fim da partida; se nada disso, avança o dia
- * Opções: problemas (padrão: os dados reais). Na etapa 4 entra aqui
- * também a função de sorteio, para os eventos aleatórios.
- */
-export function escolherCarta(estado, disciplinaId, { problemas = PROBLEMAS } = {}) {
+export function escolherCarta(estado, disciplinaId, { problemas = PROBLEMAS, aleatorio = Math.random } = {}) {
   if (estado.situacao !== 'jogando') {
     throw new Error('A partida já terminou');
   }
@@ -71,10 +50,21 @@ export function escolherCarta(estado, disciplinaId, { problemas = PROBLEMAS } = 
   const receita = calcularReceita(indices);
   indices = aplicarVariacoes(indices, { dinheiro: receita });
 
-  // 3. registra o dia e confere se a partida acabou
+// 3. eventos do dia (podem levar à falência também)
+  const doDia = aplicarEventos(estado.indices, indices, aleatorio);
+  indices = doDia.indices;
+
+  // 4. registra o dia e confere se a partida acabou
   const historico = [
     ...estado.historico,
-    { dia: estado.dia, problemaId: problema.id, disciplina: disciplinaId, receita, indices },
+    {
+      dia: estado.dia,
+      problemaId: problema.id,
+      disciplina: disciplinaId,
+      receita,
+      eventos: doDia.eventos,
+      indices,
+    },
   ];
   const novo = { ...estado, indices, historico };
   novo.situacao = verificarSituacao(novo);

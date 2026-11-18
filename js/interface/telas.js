@@ -1,18 +1,22 @@
-// As 3 telas do jogo: inicial (escolha do perfil), do dia e final.
-// Cada função apaga o conteúdo da área principal e desenha a tela.
-// Elas não sabem as regras: só mostram o que o motor calculou e avisam
-// main.js quando o jogador clica em algo (as funções "ao...").
 import { CONFIG, INDICADORES, PERFIS } from '../config.js';
-import { el, formatarNumero, nomeDisciplina, painelIndicadores, carta } from './componentes.js';
+import { buscarEvento } from '../motor/eventos.js';
+import {
+  el,
+  formatarNumero,
+  nomeDisciplina,
+  painelIndicadores,
+  carta,
+  cartaoEvento,
+  listaContagem,
+} from './componentes.js';
 
-/** { sustentabilidade: 70 } → "Sustentabilidade ≥ 70" (várias metas: "A ≥ 60 e B ≥ 60") */
+
 function textoMeta(meta) {
   return Object.entries(meta)
     .map(([id, minimo]) => `${INDICADORES.find((i) => i.id === id).nome} ≥ ${minimo}`)
     .join(' e ');
 }
 
-/** Troca o conteúdo da tela e põe o foco no título, para leitores de tela anunciarem a mudança. */
 function mostrar(raiz, ...conteudo) {
   raiz.replaceChildren(...conteudo.filter(Boolean));
   raiz.querySelector('h2')?.focus();
@@ -58,13 +62,14 @@ export function telaJogo(raiz, estado, turno, aoEscolher) {
       `Dia ${turno.dia} de ${CONFIG.totalDias} · ${perfil.nome} · Meta: ${textoMeta(perfil.meta)}`,
     ),
     painelIndicadores(estado.indices, ontem && anteriores),
-    ontem &&
+    ontem && 
       el(
         'p',
         { class: 'resumo' },
         `Ontem você escolheu ${nomeDisciplina(ontem.disciplina)}. ` +
           `A cidade arrecadou ${formatarNumero(ontem.receita)} e os índices caíram ${CONFIG.desgasteDiario} pelo desgaste.`,
       ),
+    ...(ontem?.eventos ?? []).map((id) => cartaoEvento(buscarEvento(id))),
     el('p', { class: 'setor' }, `${turno.problema.setor} · ${turno.problema.id}`),
     el('h2', { tabindex: -1 }, turno.problema.titulo),
     el('p', { class: 'descricao' }, turno.problema.descricao),
@@ -96,6 +101,30 @@ export function telaFinal(raiz, resultado, aoRecomecar) {
           {},
           `${m.atingida ? '✅' : '❌'} ${m.nome}: ${formatarNumero(m.valor)} (mínimo ${m.minimo})`,
         ),
+      ),
+    ),
+    el('h3', {}, 'Relatório da cidade'),
+    el(
+      'p',
+      {},
+      `Dinheiro: começou com ${formatarNumero(CONFIG.inicial.dinheiro)}, ` +
+        `arrecadou ${formatarNumero(resultado.arrecadado)}, ` +
+        `investiu ${formatarNumero(resultado.investido)} em soluções e ` +
+        `${resultado.saldoEventos >= 0 ? 'ganhou' : 'perdeu'} ${formatarNumero(Math.abs(resultado.saldoEventos))} com eventos. ` +
+        `Terminou com ${formatarNumero(resultado.indices.dinheiro)}.`,
+    ),
+    el(
+      'div',
+      { class: 'relatorio' },
+      el('section', {}, el('h4', {}, 'Suas escolhas'), listaContagem(resultado.escolhas, nomeDisciplina)),
+      el('section', {}, el('h4', {}, 'Setores atendidos'), listaContagem(resultado.setores)),
+      el(
+        'section',
+        {},
+        el('h4', {}, 'Eventos'),
+        resultado.eventos.length
+          ? el('ul', { class: 'contagem' }, ...resultado.eventos.map((e) => el('li', {}, `Dia ${e.dia}: ${e.titulo}`)))
+          : el('p', {}, 'Nenhum evento aconteceu.'),
       ),
     ),
     el('button', { class: 'botao', type: 'button', onclick: aoRecomecar }, 'Jogar de novo'),

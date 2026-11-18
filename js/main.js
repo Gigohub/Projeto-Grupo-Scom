@@ -1,6 +1,3 @@
-// Ponto de partida do jogo no navegador: liga o motor (regras),
-// as telas (interface) e o salvamento. É o único arquivo que guarda
-// a partida em andamento (a variável `estado`).
 import { criarEstado } from './motor/estado.js';
 import { turnoAtual, escolherCarta } from './motor/turno.js';
 import { resultadoFinal } from './motor/fim.js';

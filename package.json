@@ -5,7 +5,8 @@
     "type": "module",
     "description": "Jogo de cartas sobre decisões de engenharia para a cidade",
     "scripts": {
-      "test": "node --test",
-      "converter": "node ferramentas/converter-csv.js"
+        "test": "node --test",
+        "converter": "node ferramentas/converter-csv.js",
+        "simular": "node ferramentas/simular.js"
     }
   }

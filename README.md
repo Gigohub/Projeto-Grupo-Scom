@@ -59,3 +59,5 @@ npm test
 | `js/motor/` | Regras do jogo, sem tela (estado, turno, fim) — testáveis no Node |
 | `js/interface/` | Desenho das telas (inicial, do dia, final) |
 | `js/salvamento.js` | Guarda a partida no navegador (localStorage) |
+| `js/motor/` | Regras do jogo, sem tela (estado, turno, eventos, fim) — testáveis no Node |
+| `js/dados/eventos.js` | Eventos aleatórios e de limiar (editado à mão) |

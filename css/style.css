@@ -146,8 +146,7 @@
     color: var(--suave);
     font-size: 0.9rem;
   }
-  /* Problema do dia */
-.setor {
+  .setor {
     margin: 16px 0 0;
     color: var(--destaque);
     font-weight: 700;
@@ -164,7 +163,6 @@
     font-size: 1.05rem;
   }
 
-  /* Cartas de solução */
   .cartas {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -194,7 +192,7 @@
     flex-grow: 1;
   }
   
-  .carta-efeitos {
+  .efeitos {
     display: flex;
     flex-wrap: wrap;
     gap: 4px 12px;
@@ -202,8 +200,30 @@
     font-weight: 600;
   }
   
-  /* Tela final */
-  .metas {
+  .evento {
+    background: #fff8e6;
+    border-left: 4px solid #c98a00;
+    border-radius: var(--raio);
+    padding: 8px 12px;
+    margin: 8px 0;
+  }
+  
+  .evento p {
+    margin: 4px 0;
+  }
+  
+  .metas,
+  .contagem {
     padding-left: 0;
     list-style: none;
+  }
+  
+  .relatorio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0 16px;
+  }
+  
+  .relatorio h4 {
+    margin-bottom: 4px;
   }

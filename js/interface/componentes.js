@@ -1,14 +1,7 @@
-// Peças pequenas de interface, reaproveitadas pelas telas (telas.js).
 import { INDICADORES } from '../config.js';
 import { DISCIPLINAS } from '../dados/problemas.js';
 
-/**
- * Cria um elemento HTML. Exemplo:
- *   el('button', { class: 'botao', onclick: funcao }, 'Clique aqui')
- * Atributos que começam com "on" viram eventos. Textos entram como texto
- * puro (nunca como HTML), então um "<" vindo dos CSVs não quebra a página.
- * Filhos null/false são ignorados, o que permite: condicao && el(...)
- */
+
 export function el(tag, atributos = {}, ...filhos) {
   const elemento = document.createElement(tag);
   for (const [nome, valor] of Object.entries(atributos)) {
@@ -59,21 +52,42 @@ export function painelIndicadores(indices, anteriores) {
   );
 }
 
-/** Uma carta de solução: um botão com a disciplina, o texto e os efeitos. */
-export function carta(solucao, aoEscolher) {
-  return el(
-    'button',
-    { class: 'carta', type: 'button', onclick: () => aoEscolher(solucao.disciplina) },
-    el('span', { class: 'carta-disciplina' }, nomeDisciplina(solucao.disciplina)),
-    el('span', { class: 'carta-texto' }, solucao.texto),
-    el(
+export function linhaEfeitos(efeitos) {
+    return el(
       'span',
-      { class: 'carta-efeitos' },
-      ...INDICADORES.map(({ id, nome, icone }) => {
-        const valor = solucao.efeitos[id];
+      { class: 'efeitos' },
+      ...INDICADORES.filter(({ id }) => id in efeitos).map(({ id, nome, icone }) => {
+        const valor = efeitos[id];
         const classe = valor > 0 ? 'sobe' : valor < 0 ? 'desce' : 'neutro';
         return el('span', { class: classe, title: nome }, `${icone} ${comSinal(valor)}`);
       }),
-    ),
-  );
+    );
 }
+  
+export function carta(solucao, aoEscolher) {
+    return el(
+      'button',
+      { class: 'carta', type: 'button', onclick: () => aoEscolher(solucao.disciplina) },
+      el('span', { class: 'carta-disciplina' }, nomeDisciplina(solucao.disciplina)),
+      el('span', { class: 'carta-texto' }, solucao.texto),
+      linhaEfeitos(solucao.efeitos),
+    );
+}
+  
+export function cartaoEvento(evento) {
+    return el(
+      'div',
+      { class: 'evento' },
+      el('strong', {}, `📰 ${evento.titulo}`),
+      el('p', {}, evento.descricao),
+      linhaEfeitos(evento.efeitos),
+    );
+}
+  
+export function listaContagem(contagem, nomear = (item) => item) {
+    return el(
+      'ul',
+      { class: 'contagem' },
+      ...contagem.map(({ item, vezes }) => el('li', {}, `${nomear(item)}: ${vezes}`)),
+    );
+  }

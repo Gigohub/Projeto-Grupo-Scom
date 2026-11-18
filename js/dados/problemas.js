@@ -1,6 +1,3 @@
-// ARQUIVO GERADO AUTOMATICAMENTE por ferramentas/converter-csv.js
-// NÃO edite à mão: edite os CSVs em dados-fonte/ e rode "npm run converter".
-
 export const DISCIPLINAS = [
   {
     "id": "ambiental",

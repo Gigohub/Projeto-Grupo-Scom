@@ -6,6 +6,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { CONFIG, PERFIS } from '../js/config.js';
+import { EVENTOS_ALEATORIOS } from '../js/dados/eventos.js';
 import { embaralhar, criarEstado, aplicarVariacoes } from '../js/motor/estado.js';
 import { turnoAtual, calcularReceita, escolherCarta } from '../js/motor/turno.js';
 import { verificarSituacao, avaliarMeta, resultadoFinal } from '../js/motor/fim.js';
@@ -32,7 +33,8 @@ const PROBLEMAS_TESTE = Array.from({ length: 40 }, (_, i) => ({
     efeitos,
   })),
 }));
-const OPCOES = { problemas: PROBLEMAS_TESTE };
+
+const OPCOES = { problemas: PROBLEMAS_TESTE, aleatorio: () => 0.99 };
 
 // Estado com índices escolhidos e sempre as mesmas 3 cartas em todos os dias
 function estadoDeTeste(indices = {}) {
@@ -235,6 +237,49 @@ test('resultadoFinal: falência nunca é vitória, mesmo com a meta atingida', (
   const resultado = resultadoFinal(falido);
   assert.equal(resultado.venceu, false);
   assert.equal(resultado.situacao, 'falencia');
+});
+
+test('escolherCarta aplica o evento aleatório sorteado e o registra no histórico', () => {
+  const evento = EVENTOS_ALEATORIOS[0];
+  const semEvento = escolherCarta(estadoDeTeste(), 'automacao', OPCOES);
+  // sorteio 0 → acontece evento; segundo sorteio 0 → o primeiro da lista
+  const comEvento = escolherCarta(estadoDeTeste(), 'automacao', { ...OPCOES, aleatorio: () => 0 });
+  assert.deepEqual(comEvento.historico[0].eventos, [evento.id]);
+  assert.ok(
+    Math.abs(comEvento.indices.dinheiro - (semEvento.indices.dinheiro + (evento.efeitos.dinheiro ?? 0))) < 1e-9,
+  );
+});
+
+test('escolherCarta dispara o êxodo quando a felicidade cai abaixo do limiar', () => {
+  // felicidade 20 - 5 (automação) - 5 (desgaste) = 10, abaixo de 15
+  const depois = escolherCarta(estadoDeTeste({ felicidade: 20 }), 'automacao', OPCOES);
+  assert.deepEqual(depois.historico[0].eventos, ['exodo']);
+});
+
+test('resultadoFinal traz o relatório: escolhas, setores e contas do dinheiro', () => {
+  let estado = estadoDeTeste();
+  for (const disciplina of ['ambiental', 'automacao', 'ambiental']) {
+    estado = escolherCarta(estado, disciplina, OPCOES);
+  }
+  const r = resultadoFinal({ ...estado, situacao: 'concluida' }, OPCOES);
+  assert.deepEqual(r.escolhas, [
+    { item: 'ambiental', vezes: 2 },
+    { item: 'automacao', vezes: 1 },
+  ]);
+  assert.deepEqual(r.setores, [{ item: 'Teste', vezes: 3 }]);
+  assert.equal(r.investido, 24); // 10 + 4 + 10
+  assert.deepEqual(r.eventos, []);
+  // dinheiro final = inicial + arrecadado - investido + eventos
+  const conta = CONFIG.inicial.dinheiro + r.arrecadado - r.investido + r.saldoEventos;
+  assert.ok(Math.abs(conta - r.indices.dinheiro) < 1e-9);
+});
+
+test('resultadoFinal lista os eventos com o dia em que aconteceram', () => {
+  const evento = EVENTOS_ALEATORIOS[0];
+  const estado = escolherCarta(estadoDeTeste(), 'ambiental', { ...OPCOES, aleatorio: () => 0 });
+  const r = resultadoFinal({ ...estado, situacao: 'concluida' }, OPCOES);
+  assert.deepEqual(r.eventos.map((e) => [e.dia, e.id]), [[1, evento.id]]);
+  assert.equal(r.saldoEventos, evento.efeitos.dinheiro ?? 0);
 });
 
 test('resultadoFinal recusa partida que ainda não terminou', () => {

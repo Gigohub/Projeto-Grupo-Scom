@@ -1,12 +1,5 @@
-// Guarda a partida no navegador (localStorage), para o jogador poder
-// fechar a aba e continuar depois. Só existe UMA partida salva por vez.
-//
-// O parâmetro `armazenamento` é o localStorage do navegador; os testes
-// passam um armazenamento de mentira no lugar.
-
 const CHAVE = 'jogo-engenharia-urbana/partida';
 
-/** Salva o estado. Se o navegador bloquear o armazenamento, o jogo segue sem salvar. */
 export function salvar(estado, armazenamento = globalThis.localStorage) {
   try {
     armazenamento.setItem(CHAVE, JSON.stringify(estado));
@@ -29,7 +22,6 @@ export function carregar(armazenamento = globalThis.localStorage) {
   return null;
 }
 
-/** Apaga a partida salva (usado quando a partida termina). */
 export function apagar(armazenamento = globalThis.localStorage) {
   try {
     armazenamento.removeItem(CHAVE);
