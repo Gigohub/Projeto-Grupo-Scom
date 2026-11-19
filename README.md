@@ -51,7 +51,7 @@ npm test
 | `js/config.js` | Todas as regras numéricas (valores iniciais, desgaste, receita, metas) |
 | `js/dados/problemas.js` | Problemas e soluções (gerado a partir dos CSVs) |
 | `dados-fonte/` | CSVs editáveis — a fonte dos dados |
-| `ferramentas/` | Conversor de CSV (e, depois, o simulador de balanceamento) |
+| `ferramentas/` | Conversor de CSV e simulador de balanceamento |
 | `testes/` | Testes automatizados (`node --test`) |
 | `index.html` | Página do jogo |
 | `css/estilo.css` | Aparência (cores, cartas, painel) |

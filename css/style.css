@@ -146,6 +146,31 @@
     color: var(--suave);
     font-size: 0.9rem;
   }
+
+  .cabecalho-dia {
+    font-weight: 400;
+    margin: 0 0 12px;
+  }
+  
+  .so-leitor {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  
+  .como-jogar {
+    margin: 0 0 16px;
+  }
+  
+  .como-jogar summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--destaque);
+  }
+
   .setor {
     margin: 16px 0 0;
     color: var(--destaque);
@@ -155,8 +180,9 @@
     letter-spacing: 0.05em;
   }
   
-  .setor + h2 {
-    margin-top: 4px;
+  .problema {
+    margin: 4px 0 0;
+    font-size: 1.5rem;
   }
   
   .descricao {

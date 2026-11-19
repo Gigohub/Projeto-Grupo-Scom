@@ -1,3 +1,7 @@
+// As 3 telas do jogo: inicial (escolha do perfil), do dia e final.
+// Cada função apaga o conteúdo da área principal e desenha a tela.
+// Elas não sabem as regras: só mostram o que o motor calculou e avisam
+// main.js quando o jogador clica em algo (as funções "ao...").
 import { CONFIG, INDICADORES, PERFIS } from '../config.js';
 import { buscarEvento } from '../motor/eventos.js';
 import {
@@ -8,15 +12,18 @@ import {
   carta,
   cartaoEvento,
   listaContagem,
+  icone,
+  soParaLeitor,
 } from './componentes.js';
 
-
+/** { sustentabilidade: 70 } → "Sustentabilidade ≥ 70" (várias metas: "A ≥ 60 e B ≥ 60") */
 function textoMeta(meta) {
   return Object.entries(meta)
     .map(([id, minimo]) => `${INDICADORES.find((i) => i.id === id).nome} ≥ ${minimo}`)
     .join(' e ');
 }
 
+/** Troca o conteúdo da tela e põe o foco no título, para leitores de tela anunciarem a mudança. */
 function mostrar(raiz, ...conteudo) {
   raiz.replaceChildren(...conteudo.filter(Boolean));
   raiz.querySelector('h2')?.focus();
@@ -32,6 +39,30 @@ export function telaInicial(raiz, { temPartidaSalva, aoEscolherPerfil, aoContinu
       `Você foi contratado(a) como consultor(a) da prefeitura por ${CONFIG.totalDias} dias. ` +
         `A cada dia chega um problema e ${CONFIG.cartasPorTurno} soluções de engenharias diferentes: ` +
         'escolha uma. Se o dinheiro ficar negativo, a cidade vai à falência.',
+    ),
+    el(
+      'details',
+      { class: 'como-jogar' },
+      el('summary', {}, 'Como jogar'),
+      el(
+        'ul',
+        {},
+        el('li', {}, 'Cada solução muda os 4 índices: Dinheiro, Eficiência, Sustentabilidade e Felicidade.'),
+        el(
+          'li',
+          {},
+          `Todo dia a Eficiência, a Sustentabilidade e a Felicidade caem ${CONFIG.desgasteDiario} pelo desgaste da cidade.`,
+        ),
+        el('li', {}, 'A cidade arrecada dinheiro todo dia: mais quando a Eficiência e a Felicidade estão altas.'),
+        el(
+          'li',
+          {},
+          'Eventos podem acontecer: alguns por acaso, outros quando um índice passa de um limite ' +
+            `(ex.: Felicidade abaixo de ${CONFIG.limiares.exodoFelicidade} faz moradores irem embora).`,
+        ),
+        el('li', {}, `Você vence se chegar ao dia ${CONFIG.totalDias} sem falir e com a meta do seu perfil.`),
+        el('li', {}, 'A partida fica salva neste navegador: dá para fechar e continuar depois.'),
+      ),
     ),
     temPartidaSalva &&
       el('button', { class: 'botao', type: 'button', onclick: aoContinuar }, 'Continuar partida salva'),
@@ -56,13 +87,15 @@ export function telaJogo(raiz, estado, turno, aoEscolher) {
   const perfil = PERFIS[estado.perfil];
   mostrar(
     raiz,
+    // o foco vai para este título: assim o leitor de tela lê, em ordem,
+    // os índices, o resumo de ontem, as notícias e só depois o problema
     el(
-      'p',
-      { class: 'cabecalho-dia' },
+      'h2',
+      { class: 'cabecalho-dia', tabindex: -1 },
       `Dia ${turno.dia} de ${CONFIG.totalDias} · ${perfil.nome} · Meta: ${textoMeta(perfil.meta)}`,
     ),
     painelIndicadores(estado.indices, ontem && anteriores),
-    ontem && 
+    ontem &&
       el(
         'p',
         { class: 'resumo' },
@@ -71,7 +104,7 @@ export function telaJogo(raiz, estado, turno, aoEscolher) {
       ),
     ...(ontem?.eventos ?? []).map((id) => cartaoEvento(buscarEvento(id))),
     el('p', { class: 'setor' }, `${turno.problema.setor} · ${turno.problema.id}`),
-    el('h2', { tabindex: -1 }, turno.problema.titulo),
+    el('h3', { class: 'problema' }, turno.problema.titulo),
     el('p', { class: 'descricao' }, turno.problema.descricao),
     el('p', {}, 'Escolha uma solução:'),
     el('div', { class: 'cartas' }, ...turno.cartas.map((c) => carta(c, aoEscolher))),
@@ -99,7 +132,9 @@ export function telaFinal(raiz, resultado, aoRecomecar) {
         el(
           'li',
           {},
-          `${m.atingida ? '✅' : '❌'} ${m.nome}: ${formatarNumero(m.valor)} (mínimo ${m.minimo})`,
+          icone(m.atingida ? '✅ ' : '❌ '),
+          soParaLeitor(m.atingida ? 'Atingida: ' : 'Não atingida: '),
+          `${m.nome}: ${formatarNumero(m.valor)} (mínimo ${m.minimo})`,
         ),
       ),
     ),
