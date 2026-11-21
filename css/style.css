@@ -240,6 +240,43 @@
     flex-grow: 1;
   }
   
+  /* Bloco do contratante falando com o jogador */
+.contratante-bloco {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.contratante-foto {
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--destaque);
+  flex-shrink: 0;
+}
+
+.contratante-fala {
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-left: 4px solid var(--destaque);
+  border-radius: var(--raio);
+  padding: 12px 16px;
+  flex: 1;
+}
+
+/* Remove a margem extra de cima quando .setor e os parágrafos estão dentro do balão */
+.contratante-fala .setor,
+.contratante-fala p:first-child {
+  margin-top: 0;
+}
+
+.contratante-fala p:last-child {
+  margin-bottom: 0;
+}
+
+
   .efeitos {
     display: flex;
     flex-wrap: wrap;
