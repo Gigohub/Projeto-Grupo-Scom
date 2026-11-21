@@ -66,14 +66,16 @@ export function telaInicial(raiz, { temPartidaSalva, aoEscolherPerfil, aoContinu
     ),
     temPartidaSalva &&
       el('button', { class: 'botao', type: 'button', onclick: aoContinuar }, 'Continuar partida salva'),
-    el(
+   el(
       'div',
       { class: 'perfis' },
       ...Object.entries(PERFIS).map(([id, perfil]) =>
         el(
           'button',
           { class: 'perfil', type: 'button', onclick: () => aoEscolherPerfil(id) },
-          el('strong', {}, perfil.nome),
+          el('img', { class: 'perfil-foto', src: perfil.imagem, alt: perfil.personagem }),
+          el('strong', {}, perfil.personagem),
+          el('span', { class: 'perfil-area' }, perfil.nome),
           el('span', {}, 'Meta no dia ' + CONFIG.totalDias + ': ' + textoMeta(perfil.meta)),
         ),
       ),
