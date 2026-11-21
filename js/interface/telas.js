@@ -34,11 +34,20 @@ export function telaInicial(raiz, { temPartidaSalva, aoEscolherPerfil, aoContinu
     raiz,
     el('h2', { tabindex: -1 }, 'Escolha seu perfil'),
     el(
-      'p',
-      {},
-      `Você foi contratado(a) como consultor(a) da prefeitura por ${CONFIG.totalDias} dias. ` +
-        `A cada dia chega um problema e ${CONFIG.cartasPorTurno} soluções de engenharias diferentes: ` +
-        'escolha uma. Se o dinheiro ficar negativo, a cidade vai à falência.',
+      'div',
+      { class: 'contratante-bloco' },
+      el('img', { class: 'contratante-foto', src: 'img/cliente.png', alt: 'Contratante da prefeitura' }),
+      el(
+        'div',
+        { class: 'contratante-fala' },
+        el(
+          'p',
+          {},
+          `Você foi contratado(a) como consultor(a) da prefeitura por ${CONFIG.totalDias} dias. ` +
+            `A cada dia chega um problema e ${CONFIG.cartasPorTurno} soluções de engenharias diferentes: ` +
+            'escolha uma. Se o dinheiro ficar negativo, a cidade vai à falência.',
+        ),
+      ),
     ),
     el(
       'details',
@@ -105,9 +114,18 @@ export function telaJogo(raiz, estado, turno, aoEscolher) {
           `A cidade arrecadou ${formatarNumero(ontem.receita)} e os índices caíram ${CONFIG.desgasteDiario} pelo desgaste.`,
       ),
     ...(ontem?.eventos ?? []).map((id) => cartaoEvento(buscarEvento(id))),
-    el('p', { class: 'setor' }, `${turno.problema.setor} · ${turno.problema.id}`),
-    el('h3', { class: 'problema' }, turno.problema.titulo),
-    el('p', { class: 'descricao' }, turno.problema.descricao),
+    el(
+      'div',
+      { class: 'contratante-bloco' },
+      el('img', { class: 'contratante-foto', src: 'img/cliente.png', alt: 'Contratante da prefeitura' }),
+      el(
+        'div',
+        { class: 'contratante-fala' },
+        el('p', { class: 'setor' }, `${turno.problema.setor} · ${turno.problema.id}`),
+        el('h3', { class: 'problema' }, turno.problema.titulo),
+        el('p', { class: 'descricao' }, turno.problema.descricao),
+      ),
+    ),
     el('p', {}, 'Escolha uma solução:'),
     el('div', { class: 'cartas' }, ...turno.cartas.map((c) => carta(c, aoEscolher))),
   );
