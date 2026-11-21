@@ -32,10 +32,30 @@ export const CONFIG = {
     { id: 'sustentabilidade', nome: 'Sustentabilidade', icone: '🌳', limitado: true },
     { id: 'felicidade', nome: 'Felicidade', icone: '😊', limitado: true },
   ];
-  
+   
   export const PERFIS = {
-    ambiental: { nome: 'Ambiental', meta: { sustentabilidade: 70 } },
-    automacao: { nome: 'Automação', meta: { eficiencia: 60, felicidade: 60 } },
-    eletrica: { nome: 'Elétrica', meta: { eficiencia: 70 } },
-    mecanica: { nome: 'Mecânica', meta: { dinheiro: 50 } },
-  };
+  ambiental: {
+    nome: 'Ambiental',
+    personagem: 'Dra. Clara Mendes',
+    imagem: 'img/ambiental.png',
+    meta: { sustentabilidade: 70 },
+  },
+  automacao: {
+    nome: 'Automação',
+    personagem: 'Eng. Lucas Sato',
+    imagem: 'img/automacao.png',
+    meta: { eficiencia: 60, felicidade: 60 },
+  },
+  eletrica: {
+    nome: 'Elétrica',
+    personagem: 'Eng. Marina Costa',
+    imagem: 'img/eletrica.png',
+    meta: { eficiencia: 70 },
+  },
+  mecanica: {
+    nome: 'Mecânica',
+    personagem: 'Eng. Rafael Souza',
+    imagem: 'img/mecanica.png',
+    meta: { dinheiro: 50 },
+  },
+};
