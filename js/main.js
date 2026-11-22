@@ -3,6 +3,7 @@ import { turnoAtual, escolherCarta } from './motor/turno.js';
 import { resultadoFinal } from './motor/fim.js';
 import { salvar, carregar, apagar } from './salvamento.js';
 import { telaInicial, telaJogo, telaFinal } from './interface/telas.js';
+import { prepararMusica } from './musica.js';
 
 const raiz = document.getElementById('app');
 let estado = null;
@@ -51,4 +52,7 @@ function escolher(disciplinaId) {
   }
 }
 
-inicio();
+prepararMusica(document.getElementById('musica'), 
+document.getElementById('botao-musica'));
+
+inicio();;
