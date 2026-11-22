@@ -1,63 +1,123 @@
-# Jogo de Engenharia Urbana
+# COLAPCITY
 
-Jogo de cartas por turnos: você é um consultor contratado pela prefeitura e tem
-30 dias para resolver os problemas da cidade escolhendo soluções de quatro
-disciplinas da engenharia (Ambiental, Automação, Elétrica e Mecânica).
+Jogo de cartas para navegador sobre decisões de engenharia na cidade. Você é
+um consultor contratado pela prefeitura e tem 30 dias para resolver os
+problemas urbanos escolhendo soluções de quatro engenharias: Ambiental,
+Automação, Elétrica e Mecânica.
 
-## Requisitos
+**▶ Jogar agora:** <https://gigohub.github.io/Projeto-Grupo-Scom/>
 
-- Um navegador moderno (Chrome, Edge, Firefox).
-- [Node.js](https://nodejs.org) 18 ou mais recente, **só** para rodar os testes
-  e o conversor de CSV. O jogo em si não precisa de Node.
+Funciona no computador e no celular, sem instalar nada.
 
-## Como rodar o jogo localmente
+## Como funciona
+
+- A cidade tem 4 índices: 💰 Dinheiro, ⚡ Eficiência, 🌳 Sustentabilidade e
+  😊 Felicidade.
+- A cada dia chega um problema real da cidade (entre 100 cadastrados) com 3
+  soluções de engenharias diferentes. Cada solução muda os índices.
+- Todo dia a eficiência, a sustentabilidade e a felicidade caem um pouco pelo
+  desgaste da cidade, e a prefeitura arrecada dinheiro (mais quando a cidade
+  está eficiente e feliz).
+- Eventos podem acontecer: alguns por acaso (tempestade, festival,
+  investidores...) e outros quando um índice passa de um limite (êxodo de
+  moradores, apagão, prêmio de cidade sustentável).
+- Se o dinheiro ficar negativo, a cidade vai à falência. Vence quem chega ao
+  dia 30 com a meta do seu perfil.
+- **Personagem bônus:** ao vencer com os 4 engenheiros, o Prefeito é liberado,
+  com uma meta mais difícil (equilibrar os 4 índices).
+- A partida fica salva no navegador: dá para fechar e continuar depois.
+
+## Como rodar localmente
 
 O jogo usa módulos JavaScript (`import`), que o navegador bloqueia quando o
-arquivo é aberto com duplo clique. Use um servidor local:
+`index.html` é aberto com duplo clique. Use um servidor local:
 
 - **VS Code:** instale a extensão *Live Server*, clique com o botão direito no
   `index.html` → *Open with Live Server*; **ou**
 - **Terminal:** na pasta do projeto, rode `python -m http.server 8000` e abra
   <http://localhost:8000>.
 
-## Como editar os problemas e soluções
+Para os testes, o conversor e o simulador é preciso o
+[Node.js](https://nodejs.org) 18 ou mais recente. O jogo em si não precisa.
 
-1. Edite os CSVs em `dados-fonte/`:
-   - **um CSV de problemas**, com as colunas `ID`, `Título`, `Setor` e
-     `Descrição do Problema` (é reconhecido pela coluna `Título`);
-   - **um CSV por disciplina**, com as soluções. Colunas obrigatórias: `ID`,
-     nome da disciplina (2ª coluna, com o texto da solução), `Dinheiro`,
-     `Eficiencia`, `Sustentabilidade`, `Felicidade`.
+## Publicação (GitHub Pages)
 
-   Os IDs (`P001`...) ligam cada problema às suas soluções. Outras colunas são
-   ignoradas, e o nome dos arquivos não importa. Pode salvar com vírgula ou
-   ponto e vírgula.
-2. Rode `npm run converter` para gerar `js/dados/problemas.js`.
-3. Rode `npm test` para conferir se está tudo consistente.
+O jogo é publicado direto do repositório, sem etapa de build. No GitHub:
+**Settings → Pages → Build and deployment → Source: Deploy from a branch**,
+branch `main`, pasta `/ (root)`. Cada `git push` na `main` atualiza o site em
+alguns minutos.
 
-Nunca edite `js/dados/problemas.js` à mão: ele é sobrescrito pelo conversor.
-
-## Como rodar os testes
+## Testes
 
 ```
 npm test
 ```
+
+Testam o motor do jogo (turnos, receita, eventos, fim de partida, perfil
+bônus), o salvamento, os problemas e soluções gerados dos CSVs, o simulador e
+se as imagens de evento, vitória e derrota existem com o nome exato.
+
+## Simulador de balanceamento
+
+```
+npm run simular
+```
+
+Joga 2000 partidas por perfil com três jogadores automáticos (aleatório,
+sempre a carta mais barata e foco na meta do perfil) e mostra a taxa de
+falência, a taxa de vitória e a média final de cada índice. Use depois de
+mudar as metas, as regras ou os CSVs. Para outro número de partidas:
+`npm run simular -- 500`. 
+
+## Como editar o conteúdo
+
+| O que mudar | Onde |
+|---|---|
+| Problemas e soluções | CSVs em `dados-fonte/` e depois `npm run converter` (veja abaixo) |
+| Regras numéricas (valores iniciais, desgaste, receita, limites, chance de eventos) | `js/config.js` → `CONFIG` |
+| Perfis, personagens e metas | `js/config.js` → `PERFIS` |
+| Imagens de evento bom/ruim, vitória e derrota | `js/config.js` → `IMAGENS` (arquivos em `img/`) |
+| Eventos | `js/dados/eventos.js` |
+| Música de fundo | `musica.mp3` |
+
+**CSVs:** um CSV de problemas (colunas `ID`, `Título`, `Setor` e
+`Descrição do Problema`) e um CSV por engenharia (colunas `ID`, nome da
+engenharia com o texto da solução, `Dinheiro`, `Eficiencia`,
+`Sustentabilidade`, `Felicidade`). Os IDs (`P001`...) ligam cada problema às
+suas soluções. No Excel, salve como **"CSV UTF-8"** para não estragar os
+acentos. Depois rode `npm run converter` e `npm test`. Nunca edite
+`js/dados/problemas.js` à mão: ele é gerado pelo conversor.
+
 
 ## Estrutura
 
 | Pasta/arquivo | Para que serve |
 |---|---|
 | `index.html` | Página do jogo |
-| `js/config.js` | Todas as regras numéricas (valores iniciais, desgaste, receita, metas) |
+| `css/style.css` | Aparência (cores, cartas, painel, versão de celular) |
+| `js/main.js` | Liga o motor, as telas, o salvamento e a música |
+| `js/config.js` | Regras numéricas, perfis e imagens |
+| `js/motor/` | Regras do jogo, sem tela (estado, turno, eventos, fim) — testáveis no Node |
+| `js/interface/` | Desenho das telas (capa, perfis, dia, final) e componentes |
+| `js/salvamento.js` | Guarda a partida e as vitórias no navegador (localStorage) |
+| `js/musica.js` | Música de fundo com botão de ligar/desligar |
 | `js/dados/problemas.js` | Problemas e soluções (gerado a partir dos CSVs) |
-| `dados-fonte/` | CSVs editáveis — a fonte dos dados |
+| `js/dados/eventos.js` | Eventos aleatórios e de limiar |
+| `dados-fonte/` | CSVs editáveis — a fonte dos problemas e soluções |
+| `img/` | Ilustrações do jogo |
+| `musica.mp3` | Música de fundo |
 | `ferramentas/` | Conversor de CSV e simulador de balanceamento |
 | `testes/` | Testes automatizados (`node --test`) |
-| `index.html` | Página do jogo |
-| `css/estilo.css` | Aparência (cores, cartas, painel) |
-| `js/main.js` | Liga o motor, as telas e o salvamento |
-| `js/motor/` | Regras do jogo, sem tela (estado, turno, fim) — testáveis no Node |
-| `js/interface/` | Desenho das telas (inicial, do dia, final) |
-| `js/salvamento.js` | Guarda a partida no navegador (localStorage) |
-| `js/motor/` | Regras do jogo, sem tela (estado, turno, eventos, fim) — testáveis no Node |
-| `js/dados/eventos.js` | Eventos aleatórios e de limiar (editado à mão) |
+
+## Créditos
+
+- **Equipe:** Augusto Dutra Sierra, Caio Gabriel Pereira de Morais e Lucas Yuta Ameda — Unesp.
+- **Ilustrações:** criados pela equipe.
+- **problemas e soluções:** feito com ajuda da inteligência artificial Google Gemini.
+- **Música:** "By My Side", de Marcus P. — [Bensound](https://www.bensound.com/royalty-free-music/track/by-my-side-joyful-party) (Free Music, uso com atribuição).
+- Inspirado na mecânica de jogos de decisão por cartas (como *Sort the
+  Court e Reigns*); nenhum código, arte ou texto desses jogos foi usado.
+
+## Uso de IA generativa
+
+Parte do código foi desenvolvida com apoio do Claude (Anthropic) e Gemini (Google), com revisão e validação da equipe. A declaração completa — ferramenta, finalidade, trechos produzidos, modificações feitas pela equipe e avaliação crítica — está na seção "Uso de IA generativa" do relatório técnico.
