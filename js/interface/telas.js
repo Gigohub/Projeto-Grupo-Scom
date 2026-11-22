@@ -38,7 +38,7 @@ export function telaCapa(raiz, { temPartidaSalva, aoJogar, aoContinuar }) {
       el(
         'div',
         { class: 'capa-topo' },
-        el('span', {}, 'Desenvolvido por · Sua Equipe'),
+        el('span', {}, 'Desenvolvido por · screw up'),
         el('span', {}, 'Simulador de Gestão'),
       ),
       el(
@@ -59,7 +59,7 @@ export function telaCapa(raiz, { temPartidaSalva, aoJogar, aoContinuar }) {
         'div',
         { class: 'capa-rodape' },
         el('span', {}, 'v 1.0'),
-        el('span', {}, 'Todos os direitos reservados'),
+        el('span', {}, ' '),
       ),
     ),
   );
