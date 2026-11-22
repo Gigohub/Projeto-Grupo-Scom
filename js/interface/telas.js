@@ -1,9 +1,6 @@
-// As 3 telas do jogo: inicial (escolha do perfil), do dia e final.
-// Cada função apaga o conteúdo da área principal e desenha a tela.
-// Elas não sabem as regras: só mostram o que o motor calculou e avisam
-// main.js quando o jogador clica em algo (as funções "ao...").
 import { CONFIG, INDICADORES, PERFIS } from '../config.js';
 import { buscarEvento } from '../motor/eventos.js';
+import { perfilLiberado, engenheiros } from '../motor/fim.js';
 import {
   el,
   formatarNumero,
@@ -16,29 +13,74 @@ import {
   soParaLeitor,
 } from './componentes.js';
 
-/** { sustentabilidade: 70 } → "Sustentabilidade ≥ 70" (várias metas: "A ≥ 60 e B ≥ 60") */
 function textoMeta(meta) {
   return Object.entries(meta)
     .map(([id, minimo]) => `${INDICADORES.find((i) => i.id === id).nome} ≥ ${minimo}`)
     .join(' e ');
 }
 
-/** Troca o conteúdo da tela e põe o foco no título, para leitores de tela anunciarem a mudança. */
 function mostrar(raiz, ...conteudo) {
   raiz.replaceChildren(...conteudo.filter(Boolean));
   raiz.querySelector('h2')?.focus();
 }
 
-export function telaInicial(raiz, { temPartidaSalva, aoEscolherPerfil, aoContinuar }) {
+export function telaCapa(raiz, { temPartidaSalva, aoJogar, aoContinuar }) {
+  mostrar(
+    raiz,
+    el(
+      'div',
+      { class: 'capa-jogo' },
+      el(
+        'div',
+        { class: 'capa-topo' },
+        el('span', {}, 'Desenvolvido por · screw up'),
+        el('span', {}, 'Simulador de Gestão'),
+      ),
+      el(
+        'div',
+        { class: 'capa-centro' },
+        el('h2', { class: 'so-leitor', tabindex: -1 }, 'COLAPCITY'),
+        el('img', { class: 'capa-logo', src: 'img/logo.webp', alt: '' }),
+        el('p', { class: 'capa-subtitulo' }, 'Resolva os desafios da cidade em 30 dias'),
+        el('button', { class: 'capa-play', type: 'button', onclick: aoJogar }, 'Jogar ▶'),
+        temPartidaSalva &&
+          el(
+            'button',
+            { class: 'capa-continuar', type: 'button', onclick: aoContinuar },
+            'Continuar partida salva',
+          ),
+      ),
+      el(
+        'div',
+        { class: 'capa-rodape' },
+        el('span', {}, 'v 1.0'),
+        el('span', {}, ' '),
+      ),
+    ),
+  );
+}
+
+export function telaInicial(raiz, { temPartidaSalva, vitorias = [], aoEscolherPerfil, aoContinuar }) {
+  const totalEngenheiros = engenheiros().length;
+  const vencidos = engenheiros().filter((id) => vitorias.includes(id)).length;  
   mostrar(
     raiz,
     el('h2', { tabindex: -1 }, 'Escolha seu perfil'),
     el(
-      'p',
-      {},
-      `Você foi contratado(a) como consultor(a) da prefeitura por ${CONFIG.totalDias} dias. ` +
-        `A cada dia chega um problema e ${CONFIG.cartasPorTurno} soluções de engenharias diferentes: ` +
-        'escolha uma. Se o dinheiro ficar negativo, a cidade vai à falência.',
+      'div',
+      { class: 'contratante-bloco' },
+      el('img', { class: 'contratante-foto', src: 'img/cliente.webp', alt: 'Contratante da prefeitura' }),
+      el(
+        'div',
+        { class: 'contratante-fala' },
+        el(
+          'p',
+          {},
+          `Você foi contratado(a) como consultor(a) da prefeitura por ${CONFIG.totalDias} dias. ` +
+            `A cada dia chega um problema e ${CONFIG.cartasPorTurno} soluções de engenharias diferentes: ` +
+            'escolha uma. Se o dinheiro ficar negativo, a cidade vai à falência.',
+        ),
+      ),
     ),
     el(
       'details',
@@ -69,16 +111,35 @@ export function telaInicial(raiz, { temPartidaSalva, aoEscolherPerfil, aoContinu
    el(
       'div',
       { class: 'perfis' },
-      ...Object.entries(PERFIS).map(([id, perfil]) =>
-        el(
+      ...Object.entries(PERFIS).map(([id, perfil]) => {
+        const liberado = perfilLiberado(id, vitorias);
+        return el(
           'button',
-          { class: 'perfil', type: 'button', onclick: () => aoEscolherPerfil(id) },
+          {
+            class: perfil.bonus ? 'perfil bonus' : 'perfil',
+            type: 'button',
+            onclick: () => aoEscolherPerfil(id),
+            ...(!liberado && { disabled: '' }),
+          },
           el('img', { class: 'perfil-foto', src: perfil.imagem, alt: perfil.personagem }),
-          el('strong', {}, perfil.personagem),
+          el(
+            'strong',
+            {},
+            perfil.personagem,
+            vitorias.includes(id) && icone(' ✅'),
+            vitorias.includes(id) && soParaLeitor(' (meta já atingida)'),
+          ),
           el('span', { class: 'perfil-area' }, perfil.nome),
-          el('span', {}, 'Meta no dia ' + CONFIG.totalDias + ': ' + textoMeta(perfil.meta)),
-        ),
-      ),
+          liberado
+            ? el('span', {}, 'Meta no dia ' + CONFIG.totalDias + ': ' + textoMeta(perfil.meta))
+            : el(
+                'span',
+                {},
+                icone('🔒 '),
+                `Vença com os ${totalEngenheiros} engenheiros para liberar (${vencidos} de ${totalEngenheiros})`,
+              ),
+        );
+      }),
     ),
   );
 }
@@ -105,15 +166,24 @@ export function telaJogo(raiz, estado, turno, aoEscolher) {
           `A cidade arrecadou ${formatarNumero(ontem.receita)} e os índices caíram ${CONFIG.desgasteDiario} pelo desgaste.`,
       ),
     ...(ontem?.eventos ?? []).map((id) => cartaoEvento(buscarEvento(id))),
-    el('p', { class: 'setor' }, `${turno.problema.setor} · ${turno.problema.id}`),
-    el('h3', { class: 'problema' }, turno.problema.titulo),
-    el('p', { class: 'descricao' }, turno.problema.descricao),
+    el(
+      'div',
+      { class: 'contratante-bloco' },
+      el('img', { class: 'contratante-foto', src: 'img/cliente.webp', alt: 'Contratante da prefeitura' }),
+      el(
+        'div',
+        { class: 'contratante-fala' },
+        el('p', { class: 'setor' }, `${turno.problema.setor} · ${turno.problema.id}`),
+        el('h3', { class: 'problema' }, turno.problema.titulo),
+        el('p', { class: 'descricao' }, turno.problema.descricao),
+      ),
+    ),
     el('p', {}, 'Escolha uma solução:'),
     el('div', { class: 'cartas' }, ...turno.cartas.map((c) => carta(c, aoEscolher))),
   );
 }
 
-export function telaFinal(raiz, resultado, aoRecomecar) {
+export function telaFinal(raiz, resultado, aoRecomecar, liberouBonus = false) {
   const falencia = resultado.situacao === 'falencia';
   const titulo = falencia ? 'Falência!' : resultado.venceu ? 'Missão cumprida!' : 'Fim do contrato';
   const explicacao = falencia
@@ -125,6 +195,13 @@ export function telaFinal(raiz, resultado, aoRecomecar) {
     raiz,
     el('h2', { tabindex: -1 }, titulo),
     el('p', {}, explicacao),
+    liberouBonus &&
+    el(
+      'p',
+      { class: 'desbloqueio' },
+      icone('🏛️ '),
+      `Novo personagem liberado: ${PERFIS.prefeito.personagem}! Escolha-o em "Jogar de novo".`,
+    ),
     painelIndicadores(resultado.indices),
     el('h3', {}, 'Meta do perfil'),
     el(

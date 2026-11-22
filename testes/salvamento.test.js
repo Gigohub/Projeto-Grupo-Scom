@@ -1,8 +1,6 @@
-// Testes do salvamento. No Node não existe localStorage, então usamos um
-// "armazenamento de mentira" com as mesmas funções (getItem, setItem, removeItem).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { salvar, carregar, apagar } from '../js/salvamento.js';
+import { salvar, carregar, apagar, lerVitorias, registrarVitoria } from '../js/salvamento.js';
 import { criarEstado } from '../js/motor/estado.js';
 
 function armazenamentoFalso() {
@@ -19,6 +17,21 @@ test('salvar e carregar devolvem a mesma partida', () => {
   const estado = criarEstado('eletrica');
   salvar(estado, armazenamento);
   assert.deepEqual(carregar(armazenamento), estado);
+});
+
+test('registrarVitoria guarda cada perfil uma vez só e lerVitorias devolve a lista', () => {
+  const armazenamento = armazenamentoFalso();
+  assert.deepEqual(lerVitorias(armazenamento), []);
+  registrarVitoria('ambiental', armazenamento);
+  registrarVitoria('eletrica', armazenamento);
+  assert.deepEqual(registrarVitoria('ambiental', armazenamento), ['ambiental', 'eletrica']);
+  assert.deepEqual(lerVitorias(armazenamento), ['ambiental', 'eletrica']);
+});
+
+test('lerVitorias devolve lista vazia com dado corrompido', () => {
+  const armazenamento = armazenamentoFalso();
+  armazenamento.setItem('jogo-engenharia-urbana/vitorias', '{isto não é JSON');
+  assert.deepEqual(lerVitorias(armazenamento), []);
 });
 
 test('carregar devolve null quando não há partida salva', () => {

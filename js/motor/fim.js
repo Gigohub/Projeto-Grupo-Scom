@@ -10,6 +10,16 @@ export function verificarSituacao(estado) {
 }
 
 
+export function engenheiros() {
+    return Object.keys(PERFIS).filter((id) => !PERFIS[id].bonus);
+  }
+  
+  
+  export function perfilLiberado(perfilId, vitorias) {
+    return !PERFIS[perfilId].bonus || engenheiros().every((id) => vitorias.includes(id));
+  }
+
+
 export function avaliarMeta(perfilId, indices) {
   return Object.entries(PERFIS[perfilId].meta).map(([indicador, minimo]) => ({
     indicador,

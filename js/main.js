@@ -1,18 +1,28 @@
 import { criarEstado } from './motor/estado.js';
 import { turnoAtual, escolherCarta } from './motor/turno.js';
-import { resultadoFinal } from './motor/fim.js';
-import { salvar, carregar, apagar } from './salvamento.js';
-import { telaInicial, telaJogo, telaFinal } from './interface/telas.js';
+import { resultadoFinal , perfilLiberado } from './motor/fim.js';
+import { salvar, carregar, apagar, lerVitorias, registrarVitoria } from './salvamento.js';
+import { telaCapa, telaInicial, telaJogo, telaFinal } from './interface/telas.js';
+import { prepararMusica } from './musica.js';
 
 const raiz = document.getElementById('app');
 let estado = null;
 let bloqueadoAte = 0;
 
 function inicio() {
+  telaCapa(raiz, {
+    temPartidaSalva: carregar() !== null,
+    aoJogar: escolherPerfil,
+    aoContinuar: continuar,
+  });
+}
+
+function escolherPerfil() {
   telaInicial(raiz, {
     temPartidaSalva: carregar() !== null,
     aoEscolherPerfil: novaPartida,
     aoContinuar: continuar,
+    vitorias: lerVitorias(),
   });
 }
 
@@ -47,8 +57,13 @@ function escolher(disciplinaId) {
     mostrarDia();
   } else {
     apagar();
-    telaFinal(raiz, resultadoFinal(estado), inicio);
+    const resultado = resultadoFinal(estado);
+    const liberadoAntes = perfilLiberado('prefeito', lerVitorias())
+    const liberadoAgora = resultado.venceu && perfilLiberado('prefeito', registrarVitoria(estado.perfil));
+    telaFinal(raiz, resultado, inicio, !liberadoAntes && liberadoAgora);
   }
 }
+
+prepararMusica(document.getElementById('musica'), document.getElementById('botao-musica'));
 
 inicio();

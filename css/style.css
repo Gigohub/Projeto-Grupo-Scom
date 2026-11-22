@@ -34,6 +34,26 @@
     margin: 0;
     font-size: 1.25rem;
   }
+
+  .topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  
+  .botao-musica {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: var(--raio);
+    padding: 4px 12px;
+    white-space: nowrap;
+  }
+  
+  .botao-musica:focus-visible {
+    outline-color: #fff;
+  }
   
   main {
     max-width: 960px;
@@ -42,10 +62,9 @@
   }
   
   h2:focus {
-    outline: none; /* o foco no título é só para leitores de tela */
+    outline: none; 
   }
   
-  /* Botões em geral */
   button {
     font: inherit;
     color: inherit;
@@ -240,6 +259,43 @@
     flex-grow: 1;
   }
   
+  /* Bloco do contratante falando com o jogador */
+.contratante-bloco {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.contratante-foto {
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--destaque);
+  flex-shrink: 0;
+}
+
+.contratante-fala {
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-left: 4px solid var(--destaque);
+  border-radius: var(--raio);
+  padding: 12px 16px;
+  flex: 1;
+}
+
+/* Remove a margem extra de cima quando .setor e os parágrafos estão dentro do balão */
+.contratante-fala .setor,
+.contratante-fala p:first-child {
+  margin-top: 0;
+}
+
+.contratante-fala p:last-child {
+  margin-bottom: 0;
+}
+
+
   .efeitos {
     display: flex;
     flex-wrap: wrap;
@@ -275,3 +331,366 @@
   .relatorio h4 {
     margin-bottom: 4px;
   }
+
+/* Tela de abertura estilo jogo Flash */
+.capa-jogo {
+  border-radius: var(--raio);
+  overflow: hidden;
+  border: 2px solid var(--borda);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  background: #14221e;
+  color: #fff;
+}
+
+.capa-topo,
+.capa-rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background: #0d1614;
+  font-size: 0.8rem;
+  color: #cbd5e1;
+}
+
+.capa-centro {
+  min-height: 360px;
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+  background:
+    linear-gradient(rgba(15, 35, 30, 0.72), rgba(15, 35, 30, 0.82)),
+    url('../img/capa.webp') center / cover no-repeat,
+    radial-gradient(circle at center, #28856e 0%, #143d33 100%);
+}
+
+.capa-titulo {
+  margin: 0;
+  font-size: 2.4rem;
+  line-height: 1.1;
+  color: #ffffff;
+  text-shadow: 0 3px 0 #0d2b24, 0 6px 12px rgba(0, 0, 0, 0.45);
+}
+
+.capa-subtitulo {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  color: #e2e8f0;
+}
+
+/* Botão Play estilo Flash */
+.capa-play {
+  background: linear-gradient(180deg, #fff3a1 0%, #f5c518 100%);
+  color: #2b2100;
+  font-weight: 800;
+  font-size: 1.35rem;
+  padding: 12px 44px;
+  border: 3px solid #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 4px 0 #b88c00, 0 8px 16px rgba(0, 0, 0, 0.35);
+  transition: transform 0.12s ease, filter 0.12s ease;
+}
+
+.capa-play:hover {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+.capa-play:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #b88c00;
+}
+
+.capa-continuar {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+}
+
+.capa-continuar:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+/* Palco central estilo portal de jogos */
+.palco-portal {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+main {
+  flex: 1;
+  max-width: 960px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Moldura padrão dos anúncios */
+.anuncio-rotulo {
+  display: block;
+  text-align: center;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--suave);
+  margin-bottom: 4px;
+}
+
+.anuncio-caixa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  text-decoration: none;
+  background: var(--cartao);
+  border: 2px dashed var(--borda);
+  border-radius: var(--raio);
+  color: var(--texto);
+  overflow: hidden;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.anuncio-caixa:hover {
+  border-color: var(--destaque);
+  transform: translateY(-2px);
+}
+
+.anuncio-caixa img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Banner horizontal (728x90) */
+.anuncio-horizontal {
+  max-width: 728px;
+  margin: 12px auto 0;
+  padding: 0 16px;
+}
+
+.anuncio-horizontal .anuncio-caixa {
+  flex-direction: row;
+  min-height: 72px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+
+/* Banners verticais nas laterais (160x600) */
+.anuncio-lateral {
+  width: 160px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 16px;
+}
+
+.anuncio-lateral .anuncio-caixa {
+  min-height: 520px;
+  padding: 16px 12px;
+  font-size: 0.9rem;
+}
+
+.anuncio-lateral strong {
+  color: var(--destaque);
+  font-size: 1rem;
+}
+
+.anuncio-lateral span {
+  color: var(--suave);
+  font-size: 0.85rem;
+}
+
+/* Esconde as laterais em telas estreitas para não espremer o jogo */
+@media (max-width: 1180px) {
+  .anuncio-lateral {
+    display: none;
+  }
+}
+
+.capa-logo {
+  max-width: 420px;
+  width: 85%;
+  height: auto;
+  margin-bottom: 4px;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.45));
+  animation: pulsarLogo 2.4s ease-in-out infinite;
+}
+
+@keyframes pulsarLogo {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.10);
+  }
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  color: var(--texto);
+  background:
+	linear-gradient(rgba(244, 241, 234, 0.75), rgba(244, 241, 234, 0.75)),
+    url('../img/capa1.webp') center / cover no-repeat fixed,
+    var(--fundo);
+}
+
+img {
+  max-width: 100%;
+}
+
+main {
+  background: rgba(244, 241, 234, 0.95);
+  border-radius: var(--raio);
+  padding: 16px;
+}
+
+main:has(.capa-jogo) {
+  background: none;
+  padding: 0;
+}
+
+.perfil.bonus,
+.perfil.bonus:hover {
+  grid-column: 1 / -1;
+  border-color: #c98a00;
+}
+
+.perfil:disabled {
+  cursor: not-allowed;
+}
+
+.perfil:disabled:hover {
+  transform: none;
+}
+
+.perfil:disabled .perfil-foto {
+  filter: grayscale(1) brightness(0.6);
+}
+
+.desbloqueio {
+  background: #fff8e6;
+  border-left: 4px solid #c98a00;
+  border-radius: var(--raio);
+  padding: 8px 12px;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .palco-portal {
+    padding: 12px;
+  }
+
+  main {
+    padding: 12px;
+  }
+
+  .anuncio-horizontal {
+    padding: 0 12px;
+  }
+
+  .anuncio-horizontal .anuncio-caixa {
+    min-height: 0;
+    padding: 6px 10px;
+    gap: 10px;
+    text-align: left;
+    font-size: 0.8rem;
+  }
+
+  .anuncio-horizontal .anuncio-caixa img {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 8px;
+  }
+
+  .capa-centro {
+    min-height: 0;
+    padding: 24px 12px;
+  }
+
+  .capa-titulo {
+    font-size: 1.8rem;
+  }
+
+  .perfis {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .perfil {
+    padding: 12px 8px;
+  }
+
+  .perfil-foto {
+    width: 64px;
+    height: 64px;
+  }
+
+  .perfil span {
+    font-size: 0.8rem;
+  }
+
+  .contratante-bloco {
+    gap: 10px;
+    margin: 12px 0;
+  }
+
+  .contratante-foto {
+    width: 48px;
+    height: 48px;
+  }
+
+  .contratante-fala {
+    padding: 10px 12px;
+  }
+
+  .problema {
+    font-size: 1.2rem;
+  }
+
+  .descricao {
+    font-size: 1rem;
+  }
+
+  .indicador {
+    padding: 6px 10px;
+  }
+
+  .indicador-valor {
+    font-size: 1.2rem;
+  }
+
+  .carta {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 4px 12px;
+    padding: 12px;
+  }
+
+  .carta-imagem {
+    grid-row: 1 / span 3;
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+  }
+
+  .carta-disciplina,
+  .carta-texto,
+  .efeitos {
+    grid-column: 2;
+  }
+}
