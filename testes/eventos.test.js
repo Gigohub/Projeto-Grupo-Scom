@@ -1,11 +1,10 @@
-// Testes dos eventos (js/motor/eventos.js). Rodar com: npm test
-// Os efeitos são lidos de js/dados/eventos.js, então os testes continuam
-// valendo se o grupo mudar os números dos eventos.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { CONFIG } from '../js/config.js';
+import { readdirSync } from 'node:fs';
+import { CONFIG, IMAGENS } from '../js/config.js';
 import { EVENTOS_ALEATORIOS, EVENTOS_DE_LIMIAR } from '../js/dados/eventos.js';
 import {
+  eventoBom,
   buscarEvento,
   sortearEventoAleatorio,
   eventosDeLimiar,
@@ -70,5 +69,20 @@ test('todo evento tem id único, título, descrição e só efeitos em indicador
   for (const e of todos) {
     assert.ok(e.titulo && e.descricao, e.id);
     for (const id of Object.keys(e.efeitos)) assert.ok(id in NORMAL, `${e.id}: "${id}"`);
+  }
+});
+
+test('eventoBom: soma dos efeitos positiva é bom, negativa é ruim', () => {
+  assert.equal(eventoBom(buscarEvento('verba-federal')), true);
+  assert.equal(eventoBom(buscarEvento('tempestade')), false);
+  for (const e of [...EVENTOS_ALEATORIOS, ...EVENTOS_DE_LIMIAR]) {
+    assert.notEqual(Object.values(e.efeitos).reduce((s, v) => s + v, 0), 0, e.id);
+  }
+});
+
+test('as imagens de IMAGENS existem na pasta img, com o nome escrito igual', () => {
+  const arquivos = readdirSync(new URL('../img/', import.meta.url));
+  for (const caminho of Object.values(IMAGENS)) {
+    assert.ok(arquivos.includes(caminho.replace('img/', '')), caminho);
   }
 });

@@ -1,5 +1,6 @@
-import { INDICADORES } from '../config.js';
+import { INDICADORES, IMAGENS } from '../config.js';
 import { DISCIPLINAS } from '../dados/problemas.js';
+import { eventoBom } from '../motor/eventos.js';
 
 export function el(tag, atributos = {}, ...filhos) {
   const elemento = document.createElement(tag);
@@ -78,7 +79,6 @@ export function linhaEfeitos(efeitos) {
   );
 }
 
-/** Uma carta de solução: um botão com a disciplina, a imagem, o texto e os efeitos. */
 export function carta(solucao, aoEscolher) {
   return el(
     'button',
@@ -99,6 +99,11 @@ export function cartaoEvento(evento) {
   return el(
     'div',
     { class: 'evento' },
+    el('img', {
+        class: 'evento-imagem',
+        src: eventoBom(evento) ? IMAGENS.eventoBom : IMAGENS.eventoRuim,
+        alt: '',
+    }),
     el('strong', {}, icone('📰 '), soParaLeitor('Notícia: '), evento.titulo),
     el('p', {}, evento.descricao),
     linhaEfeitos(evento.efeitos),

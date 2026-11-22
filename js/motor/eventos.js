@@ -2,6 +2,10 @@ import { CONFIG } from '../config.js';
 import { EVENTOS_ALEATORIOS, EVENTOS_DE_LIMIAR } from '../dados/eventos.js';
 import { aplicarVariacoes } from './estado.js';
 
+export function eventoBom(evento) {
+    return Object.values(evento.efeitos).reduce((soma, valor) => soma + valor, 0) >0;
+}
+
 export function buscarEvento(id) {
   const evento = [...EVENTOS_ALEATORIOS, ...EVENTOS_DE_LIMIAR].find((e) => e.id === id);
   if (!evento) {

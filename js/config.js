@@ -66,3 +66,10 @@ export const CONFIG = {
     bonus: true,
   },
 };
+
+export const IMAGENS = {
+    eventoBom: 'img/eventobom.webp',
+    eventoRuim: 'img/eventoruim.webp',
+    vitoria: 'img/vitoria.webp',
+    derrota: 'img/derrota.webp',
+}

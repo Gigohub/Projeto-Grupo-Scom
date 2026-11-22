@@ -694,3 +694,15 @@ main:has(.capa-jogo) {
     grid-column: 2;
   }
 }
+
+.evento-imagem,
+.final-imagem {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--raio);
+}
+
+.evento-imagem {
+  margin-bottom: 8px;
+}

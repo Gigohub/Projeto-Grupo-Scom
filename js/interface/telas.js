@@ -1,4 +1,4 @@
-import { CONFIG, INDICADORES, PERFIS } from '../config.js';
+import { CONFIG, INDICADORES, PERFIS, IMAGENS } from '../config.js';
 import { buscarEvento } from '../motor/eventos.js';
 import { perfilLiberado, engenheiros } from '../motor/fim.js';
 import {
@@ -187,14 +187,16 @@ export function telaFinal(raiz, resultado, aoRecomecar, liberouBonus = false) {
   const falencia = resultado.situacao === 'falencia';
   const titulo = falencia ? 'Falência!' : resultado.venceu ? 'Missão cumprida!' : 'Fim do contrato';
   const explicacao = falencia
-    ? `O dinheiro acabou no dia ${resultado.diasJogados}.`
-    : resultado.venceu
-      ? `Você chegou ao fim dos ${CONFIG.totalDias} dias e bateu a meta do seu perfil.`
-      : `Você chegou ao fim dos ${CONFIG.totalDias} dias, mas não bateu a meta do seu perfil.`;
+  ? `O dinheiro acabou no dia ${resultado.diasJogados}.`
+  : resultado.venceu
+    ? `Você chegou ao fim dos ${CONFIG.totalDias} dias e bateu a meta do seu perfil.`
+    : `Você chegou ao fim dos ${CONFIG.totalDias} dias, mas não bateu a meta do seu perfil.`;
+  const imagem = resultado.venceu ? IMAGENS.vitoria : IMAGENS.derrota;
   mostrar(
-    raiz,
-    el('h2', { tabindex: -1 }, titulo),
-    el('p', {}, explicacao),
+  raiz,
+  el('h2', { tabindex: -1 }, titulo),
+  el('p', {}, explicacao),
+  el('img', { class: 'final-imagem', src: imagem, alt: '' }),
     liberouBonus &&
     el(
       'p',
