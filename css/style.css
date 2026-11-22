@@ -331,3 +331,89 @@
   .relatorio h4 {
     margin-bottom: 4px;
   }
+
+/* Tela de abertura estilo jogo Flash */
+.capa-jogo {
+  border-radius: var(--raio);
+  overflow: hidden;
+  border: 2px solid var(--borda);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  background: #14221e;
+  color: #fff;
+}
+
+.capa-topo,
+.capa-rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background: #0d1614;
+  font-size: 0.8rem;
+  color: #cbd5e1;
+}
+
+.capa-centro {
+  min-height: 360px;
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+  background:
+    linear-gradient(rgba(15, 35, 30, 0.72), rgba(15, 35, 30, 0.82)),
+    url('../img/capa.webp') center / cover no-repeat,
+    radial-gradient(circle at center, #28856e 0%, #143d33 100%);
+}
+
+.capa-titulo {
+  margin: 0;
+  font-size: 2.4rem;
+  line-height: 1.1;
+  color: #ffffff;
+  text-shadow: 0 3px 0 #0d2b24, 0 6px 12px rgba(0, 0, 0, 0.45);
+}
+
+.capa-subtitulo {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  color: #e2e8f0;
+}
+
+/* Botão Play estilo Flash */
+.capa-play {
+  background: linear-gradient(180deg, #fff3a1 0%, #f5c518 100%);
+  color: #2b2100;
+  font-weight: 800;
+  font-size: 1.35rem;
+  padding: 12px 44px;
+  border: 3px solid #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 4px 0 #b88c00, 0 8px 16px rgba(0, 0, 0, 0.35);
+  transition: transform 0.12s ease, filter 0.12s ease;
+}
+
+.capa-play:hover {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+.capa-play:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #b88c00;
+}
+
+.capa-continuar {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+}
+
+.capa-continuar:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
