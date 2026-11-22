@@ -547,3 +547,124 @@ body {
     url('../img/capa1.webp') center / cover no-repeat fixed,
     var(--fundo);
 }
+
+img {
+  max-width: 100%;
+}
+
+main {
+  background: rgba(244, 241, 234, 0.95);
+  border-radius: var(--raio);
+  padding: 16px;
+}
+
+main:has(.capa-jogo) {
+  background: none;
+  padding: 0;
+}
+
+@media (max-width: 600px) {
+  .palco-portal {
+    padding: 12px;
+  }
+
+  main {
+    padding: 12px;
+  }
+
+  .anuncio-horizontal {
+    padding: 0 12px;
+  }
+
+  .anuncio-horizontal .anuncio-caixa {
+    min-height: 0;
+    padding: 6px 10px;
+    gap: 10px;
+    text-align: left;
+    font-size: 0.8rem;
+  }
+
+  .anuncio-horizontal .anuncio-caixa img {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 8px;
+  }
+
+  .capa-centro {
+    min-height: 0;
+    padding: 24px 12px;
+  }
+
+  .capa-titulo {
+    font-size: 1.8rem;
+  }
+
+  .perfis {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .perfil {
+    padding: 12px 8px;
+  }
+
+  .perfil-foto {
+    width: 64px;
+    height: 64px;
+  }
+
+  .perfil span {
+    font-size: 0.8rem;
+  }
+
+  .contratante-bloco {
+    gap: 10px;
+    margin: 12px 0;
+  }
+
+  .contratante-foto {
+    width: 48px;
+    height: 48px;
+  }
+
+  .contratante-fala {
+    padding: 10px 12px;
+  }
+
+  .problema {
+    font-size: 1.2rem;
+  }
+
+  .descricao {
+    font-size: 1rem;
+  }
+
+  .indicador {
+    padding: 6px 10px;
+  }
+
+  .indicador-valor {
+    font-size: 1.2rem;
+  }
+
+  .carta {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 4px 12px;
+    padding: 12px;
+  }
+
+  .carta-imagem {
+    grid-row: 1 / span 3;
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+  }
+
+  .carta-disciplina,
+  .carta-texto,
+  .efeitos {
+    grid-column: 2;
+  }
+}
