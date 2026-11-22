@@ -86,7 +86,7 @@ export function carta(solucao, aoEscolher) {
     el('span', { class: 'carta-disciplina' }, nomeDisciplina(solucao.disciplina)),
     el('img', {
       class: 'carta-imagem',
-      src: `img/carta-${solucao.disciplina}.png`,
+      src: `img/carta-${solucao.disciplina}.webp`,
       alt: '',
     }),
     el('span', { class: 'carta-texto' }, solucao.texto),
