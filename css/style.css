@@ -536,3 +536,13 @@ main {
     transform: scale(1.10);
   }
 }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  color: var(--texto);
+  background:
+    url('../img/capa1.webp') center / cover no-repeat fixed,
+    var(--fundo);
+}
