@@ -332,7 +332,6 @@
     margin-bottom: 4px;
   }
 
-/* Tela de abertura estilo jogo Flash */
 .capa-jogo {
   border-radius: var(--raio);
   overflow: hidden;
@@ -340,6 +339,15 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   background: #14221e;
   color: #fff;
+}
+
+
+.capa-credito {
+  text-align: right;
+}
+
+.capa-credito a {
+  color: inherit;
 }
 
 .capa-topo,

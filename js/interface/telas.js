@@ -54,7 +54,20 @@ export function telaCapa(raiz, { temPartidaSalva, aoJogar, aoContinuar }) {
         'div',
         { class: 'capa-rodape' },
         el('span', {}, 'v 1.0'),
-        el('span', {}, ' '),
+        el(
+          'span',
+          { class: 'capa-credito' },
+          'Música: ',
+          el(
+            'a',
+            {
+              href: 'https://www.bensound.com/royalty-free-music/track/by-my-side-joyful-party',
+              target: '_blank',
+              rel: 'noopener',
+            },
+            '"By My Side", Marcus P. — Bensound',
+          ),
+        ),
       ),
     ),
   );
@@ -150,8 +163,6 @@ export function telaJogo(raiz, estado, turno, aoEscolher) {
   const perfil = PERFIS[estado.perfil];
   mostrar(
     raiz,
-    // o foco vai para este título: assim o leitor de tela lê, em ordem,
-    // os índices, o resumo de ontem, as notícias e só depois o problema
     el(
       'h2',
       { class: 'cabecalho-dia', tabindex: -1 },
