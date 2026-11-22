@@ -6,7 +6,6 @@
     <title>COLAPCITY</title>
     <meta name="description" content="Jogo de cartas: resolva os problemas da cidade com soluções de engenharia." />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="icon" href="img/icone.png">
   </head>
   <body>
     <header class="topo">
@@ -15,14 +14,44 @@
       <audio id="musica" src="musica.mp3" loop preload="none"></audio>
     </header>
 
-    <main id="app">
-      <p>Carregando…</p>
-      <p>
-        Se esta mensagem não sumir, o jogo foi aberto com duplo clique no
-        arquivo. Abra por um servidor local (veja o README).
-      </p>
-      <noscript>Este jogo precisa de JavaScript ativado.</noscript>
-    </main>
+    <!-- Banner horizontal opcional acima do palco -->
+    <div class="anuncio-horizontal">
+      <span class="anuncio-rotulo">ADVERTISEMENT</span>
+      <a href="#" class="anuncio-caixa" onclick="return false;">
+        <!-- Para usar imagem pronta (728x90), troque o texto abaixo por: <img src="img/ad-topo.png" alt="Anúncio" /> -->
+        <strong>🏗️ CONSTRUTORA & CIA</strong> — Concreto, aço e soluções urbanas com entrega imediata!
+      </a>
+    </div>
+
+    <!-- Palco estilo portal: anúncios nas laterais e o jogo no centro -->
+    <div class="palco-portal">
+      <aside class="anuncio-lateral">
+        <span class="anuncio-rotulo">ADVERTISEMENT</span>
+        <a href="#" class="anuncio-caixa" onclick="return false;">
+          <!-- Para usar imagem pronta (160x600), troque o conteúdo abaixo por: <img src="img/ad-esquerda.png" alt="Anúncio" /> -->
+          <strong>⚡ ENERGIA TOTAL</strong>
+          <span>Painéis solares e subestações para evitar apagões!</span>
+        </a>
+      </aside>
+
+      <main id="app">
+        <p>Carregando…</p>
+        <p>
+          Se esta mensagem não sumir, o jogo foi aberto com duplo clique no
+          arquivo. Abra por um servidor local (veja o README).
+        </p>
+        <noscript>Este jogo precisa de JavaScript ativado.</noscript>
+      </main>
+
+      <aside class="anuncio-lateral">
+        <span class="anuncio-rotulo">ADVERTISEMENT</span>
+        <a href="#" class="anuncio-caixa" onclick="return false;">
+          <!-- Para usar imagem pronta (160x600), troque o conteúdo abaixo por: <img src="img/ad-direita.png" alt="Anúncio" /> -->
+          <strong>☕ CAFÉ DO ENGENHEIRO</strong>
+          <span>O combustível oficial para fechar a meta no dia 30.</span>
+        </a>
+      </aside>
+    </div>
 
     <script type="module" src="js/main.js"></script>
   </body>
