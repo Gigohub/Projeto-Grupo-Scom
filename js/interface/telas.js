@@ -45,7 +45,7 @@ export function telaCapa(raiz, { temPartidaSalva, aoJogar, aoContinuar }) {
         'div',
         { class: 'capa-centro' },
         el('h2', { class: 'so-leitor', tabindex: -1 }, 'COLAPCITY'),
-        el('img', { class: 'capa-logo', src: 'img/logo.png', alt: '' }),
+        el('img', { class: 'capa-logo', src: 'img/logo.webp', alt: '' }),
         el('p', { class: 'capa-subtitulo' }, 'Resolva os desafios da cidade em 30 dias'),
         el('button', { class: 'capa-play', type: 'button', onclick: aoJogar }, 'Jogar ▶'),
         temPartidaSalva &&
