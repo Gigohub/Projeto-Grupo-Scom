@@ -78,12 +78,17 @@ export function linhaEfeitos(efeitos) {
   );
 }
 
-/** Uma carta de solução: um botão com a disciplina, o texto e os efeitos. */
+/** Uma carta de solução: um botão com a disciplina, a imagem, o texto e os efeitos. */
 export function carta(solucao, aoEscolher) {
   return el(
     'button',
     { class: 'carta', type: 'button', onclick: () => aoEscolher(solucao.disciplina) },
     el('span', { class: 'carta-disciplina' }, nomeDisciplina(solucao.disciplina)),
+    el('img', {
+      class: 'carta-imagem',
+      src: `img/carta-${solucao.disciplina}.png`,
+      alt: '',
+    }),
     el('span', { class: 'carta-texto' }, solucao.texto),
     linhaEfeitos(solucao.efeitos),
   );
