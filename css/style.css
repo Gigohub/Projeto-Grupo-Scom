@@ -417,3 +417,104 @@
 .capa-continuar:hover {
   background: rgba(255, 255, 255, 0.24);
 }
+
+/* Palco central estilo portal de jogos */
+.palco-portal {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+main {
+  flex: 1;
+  max-width: 960px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Moldura padrão dos anúncios */
+.anuncio-rotulo {
+  display: block;
+  text-align: center;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--suave);
+  margin-bottom: 4px;
+}
+
+.anuncio-caixa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  text-decoration: none;
+  background: var(--cartao);
+  border: 2px dashed var(--borda);
+  border-radius: var(--raio);
+  color: var(--texto);
+  overflow: hidden;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.anuncio-caixa:hover {
+  border-color: var(--destaque);
+  transform: translateY(-2px);
+}
+
+.anuncio-caixa img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Banner horizontal (728x90) */
+.anuncio-horizontal {
+  max-width: 728px;
+  margin: 12px auto 0;
+  padding: 0 16px;
+}
+
+.anuncio-horizontal .anuncio-caixa {
+  flex-direction: row;
+  min-height: 72px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+
+/* Banners verticais nas laterais (160x600) */
+.anuncio-lateral {
+  width: 160px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 16px;
+}
+
+.anuncio-lateral .anuncio-caixa {
+  min-height: 520px;
+  padding: 16px 12px;
+  font-size: 0.9rem;
+}
+
+.anuncio-lateral strong {
+  color: var(--destaque);
+  font-size: 1rem;
+}
+
+.anuncio-lateral span {
+  color: var(--suave);
+  font-size: 0.85rem;
+}
+
+/* Esconde as laterais em telas estreitas para não espremer o jogo */
+@media (max-width: 1180px) {
+  .anuncio-lateral {
+    display: none;
+  }
+}
