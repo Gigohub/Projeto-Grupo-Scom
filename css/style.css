@@ -563,6 +563,32 @@ main:has(.capa-jogo) {
   padding: 0;
 }
 
+.perfil.bonus,
+.perfil.bonus:hover {
+  grid-column: 1 / -1;
+  border-color: #c98a00;
+}
+
+.perfil:disabled {
+  cursor: not-allowed;
+}
+
+.perfil:disabled:hover {
+  transform: none;
+}
+
+.perfil:disabled .perfil-foto {
+  filter: grayscale(1) brightness(0.6);
+}
+
+.desbloqueio {
+  background: #fff8e6;
+  border-left: 4px solid #c98a00;
+  border-radius: var(--raio);
+  padding: 8px 12px;
+  font-weight: 600;
+}
+
 @media (max-width: 600px) {
   .palco-portal {
     padding: 12px;

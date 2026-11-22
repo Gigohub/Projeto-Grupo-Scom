@@ -1,15 +1,10 @@
-// Testes do motor do jogo (js/motor/). Rodar com: npm test
-//
-// Quase todos os testes usam problemas DE MENTIRA (PROBLEMAS_TESTE), com
-// efeitos fixos. Assim, se o grupo rebalancear os CSVs, estes testes
-// continuam valendo. Só o último bloco usa os dados reais.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { CONFIG, PERFIS } from '../js/config.js';
 import { EVENTOS_ALEATORIOS } from '../js/dados/eventos.js';
 import { embaralhar, criarEstado, aplicarVariacoes } from '../js/motor/estado.js';
 import { turnoAtual, calcularReceita, escolherCarta } from '../js/motor/turno.js';
-import { verificarSituacao, avaliarMeta, resultadoFinal } from '../js/motor/fim.js';
+import { verificarSituacao, avaliarMeta, resultadoFinal, engenheiros, perfilLiberado } from '../js/motor/fim.js';
 
 // ---------- dados de teste ----------
 
@@ -281,6 +276,17 @@ test('resultadoFinal lista os eventos com o dia em que aconteceram', () => {
   assert.deepEqual(r.eventos.map((e) => [e.dia, e.id]), [[1, evento.id]]);
   assert.equal(r.saldoEventos, evento.efeitos.dinheiro ?? 0);
 });
+
+test('engenheiros são todos os perfis que não são bônus', () => {
+    assert.deepEqual(engenheiros(), ['ambiental', 'automacao', 'eletrica', 'mecanica']);
+  });
+  
+  test('perfilLiberado: engenheiros sempre; o prefeito só com vitória dos 4 engenheiros', () => {
+    assert.equal(perfilLiberado('ambiental', []), true);
+    assert.equal(perfilLiberado('prefeito', []), false);
+    assert.equal(perfilLiberado('prefeito', ['ambiental', 'automacao', 'eletrica']), false);
+    assert.equal(perfilLiberado('prefeito', ['mecanica', 'eletrica', 'automacao', 'ambiental']), true);
+  });
 
 test('resultadoFinal recusa partida que ainda não terminou', () => {
   assert.throws(() => resultadoFinal(estadoDeTeste()), /não terminou/);

@@ -1,9 +1,6 @@
-// As 3 telas do jogo: inicial (escolha do perfil), do dia e final.
-// Cada função apaga o conteúdo da área principal e desenha a tela.
-// Elas não sabem as regras: só mostram o que o motor calculou e avisam
-// main.js quando o jogador clica em algo (as funções "ao...").
 import { CONFIG, INDICADORES, PERFIS } from '../config.js';
 import { buscarEvento } from '../motor/eventos.js';
+import { perfilLiberado, engenheiros } from '../motor/fim.js';
 import {
   el,
   formatarNumero,
@@ -16,14 +13,12 @@ import {
   soParaLeitor,
 } from './componentes.js';
 
-/** { sustentabilidade: 70 } → "Sustentabilidade ≥ 70" (várias metas: "A ≥ 60 e B ≥ 60") */
 function textoMeta(meta) {
   return Object.entries(meta)
     .map(([id, minimo]) => `${INDICADORES.find((i) => i.id === id).nome} ≥ ${minimo}`)
     .join(' e ');
 }
 
-/** Troca o conteúdo da tela e põe o foco no título, para leitores de tela anunciarem a mudança. */
 function mostrar(raiz, ...conteudo) {
   raiz.replaceChildren(...conteudo.filter(Boolean));
   raiz.querySelector('h2')?.focus();
@@ -65,7 +60,9 @@ export function telaCapa(raiz, { temPartidaSalva, aoJogar, aoContinuar }) {
   );
 }
 
-export function telaInicial(raiz, { temPartidaSalva, aoEscolherPerfil, aoContinuar }) {
+export function telaInicial(raiz, { temPartidaSalva, vitorias = [], aoEscolherPerfil, aoContinuar }) {
+  const totalEngenheiros = engenheiros().length;
+  const vencidos = engenheiros().filter((id) => vitorias.includes(id)).length;  
   mostrar(
     raiz,
     el('h2', { tabindex: -1 }, 'Escolha seu perfil'),
@@ -114,16 +111,35 @@ export function telaInicial(raiz, { temPartidaSalva, aoEscolherPerfil, aoContinu
    el(
       'div',
       { class: 'perfis' },
-      ...Object.entries(PERFIS).map(([id, perfil]) =>
-        el(
+      ...Object.entries(PERFIS).map(([id, perfil]) => {
+        const liberado = perfilLiberado(id, vitorias);
+        return el(
           'button',
-          { class: 'perfil', type: 'button', onclick: () => aoEscolherPerfil(id) },
+          {
+            class: perfil.bonus ? 'perfil bonus' : 'perfil',
+            type: 'button',
+            onclick: () => aoEscolherPerfil(id),
+            ...(!liberado && { disabled: '' }),
+          },
           el('img', { class: 'perfil-foto', src: perfil.imagem, alt: perfil.personagem }),
-          el('strong', {}, perfil.personagem),
+          el(
+            'strong',
+            {},
+            perfil.personagem,
+            vitorias.includes(id) && icone(' ✅'),
+            vitorias.includes(id) && soParaLeitor(' (meta já atingida)'),
+          ),
           el('span', { class: 'perfil-area' }, perfil.nome),
-          el('span', {}, 'Meta no dia ' + CONFIG.totalDias + ': ' + textoMeta(perfil.meta)),
-        ),
-      ),
+          liberado
+            ? el('span', {}, 'Meta no dia ' + CONFIG.totalDias + ': ' + textoMeta(perfil.meta))
+            : el(
+                'span',
+                {},
+                icone('🔒 '),
+                `Vença com os ${totalEngenheiros} engenheiros para liberar (${vencidos} de ${totalEngenheiros})`,
+              ),
+        );
+      }),
     ),
   );
 }
@@ -167,7 +183,7 @@ export function telaJogo(raiz, estado, turno, aoEscolher) {
   );
 }
 
-export function telaFinal(raiz, resultado, aoRecomecar) {
+export function telaFinal(raiz, resultado, aoRecomecar, liberouBonus = false) {
   const falencia = resultado.situacao === 'falencia';
   const titulo = falencia ? 'Falência!' : resultado.venceu ? 'Missão cumprida!' : 'Fim do contrato';
   const explicacao = falencia
@@ -179,6 +195,13 @@ export function telaFinal(raiz, resultado, aoRecomecar) {
     raiz,
     el('h2', { tabindex: -1 }, titulo),
     el('p', {}, explicacao),
+    liberouBonus &&
+    el(
+      'p',
+      { class: 'desbloqueio' },
+      icone('🏛️ '),
+      `Novo personagem liberado: ${PERFIS.prefeito.personagem}! Escolha-o em "Jogar de novo".`,
+    ),
     painelIndicadores(resultado.indices),
     el('h3', {}, 'Meta do perfil'),
     el(
