@@ -240,57 +240,39 @@
     flex-grow: 1;
   }
   
- /* Estilo conversa de WhatsApp para o problema diário */
-.chat-problema {
+  /* Bloco do contratante falando com o jogador */
+.contratante-bloco {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
   margin: 16px 0;
 }
 
-.chat-cabecalho {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
-}
-
 .contratante-foto {
-  width: 44px;
-  height: 44px;
+  width: 88px;
+  height: 88px;
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid var(--destaque);
   flex-shrink: 0;
 }
 
-.chat-contato {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.25;
-}
-
-.chat-nome {
-  font-size: 0.95rem;
-  color: var(--texto);
-}
-
-.chat-status {
-  font-size: 0.8rem;
-  color: var(--suave);
-}
-
 .contratante-fala {
   background: var(--cartao);
   border: 1px solid var(--borda);
-  border-radius: 0 var(--raio) var(--raio) var(--raio);
+  border-left: 4px solid var(--destaque);
+  border-radius: var(--raio);
   padding: 12px 16px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  flex: 1;
 }
 
-.contratante-fala .problema {
+/* Remove a margem extra de cima quando .setor e os parágrafos estão dentro do balão */
+.contratante-fala .setor,
+.contratante-fala p:first-child {
   margin-top: 0;
-  font-size: 1.25rem;
 }
 
-.contratante-fala .descricao {
+.contratante-fala p:last-child {
   margin-bottom: 0;
 }
 
