@@ -37,25 +37,25 @@ export const CONFIG = {
   ambiental: {
     nome: 'Ambiental',
     personagem: 'Dra. Clara Mendes',
-    imagem: 'img/ambiental.png',
+    imagem: 'img/ambiental.webp',
     meta: { sustentabilidade: 70 },
   },
   automacao: {
     nome: 'Automação',
     personagem: 'Eng. Lucas Sato',
-    imagem: 'img/automacao.png',
+    imagem: 'img/automacao.webp',
     meta: { eficiencia: 60, felicidade: 60 },
   },
   eletrica: {
     nome: 'Elétrica',
     personagem: 'Eng. Marina Costa',
-    imagem: 'img/eletrica.png',
+    imagem: 'img/eletrica.webp',
     meta: { eficiencia: 70 },
   },
   mecanica: {
     nome: 'Mecânica',
     personagem: 'Eng. Rafael Souza',
-    imagem: 'img/mecanica.png',
+    imagem: 'img/mecanica.webp',
     meta: { dinheiro: 50 },
   },
 };

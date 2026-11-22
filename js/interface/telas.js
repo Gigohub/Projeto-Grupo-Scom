@@ -29,6 +29,41 @@ function mostrar(raiz, ...conteudo) {
   raiz.querySelector('h2')?.focus();
 }
 
+export function telaCapa(raiz, { temPartidaSalva, aoJogar, aoContinuar }) {
+  mostrar(
+    raiz,
+    el(
+      'div',
+      { class: 'capa-jogo' },
+      el(
+        'div',
+        { class: 'capa-topo' },
+        el('span', {}, 'Desenvolvido por · Sua Equipe'),
+        el('span', {}, 'Simulador de Gestão'),
+      ),
+      el(
+        'div',
+        { class: 'capa-centro' },
+        el('h2', { class: 'capa-titulo', tabindex: -1 }, 'Jogo de Engenharia Urbana'),
+        el('p', { class: 'capa-subtitulo' }, 'Resolva os desafios da cidade em 30 dias'),
+        el('button', { class: 'capa-play', type: 'button', onclick: aoJogar }, 'Jogar ▶'),
+        temPartidaSalva &&
+          el(
+            'button',
+            { class: 'capa-continuar', type: 'button', onclick: aoContinuar },
+            'Continuar partida salva',
+          ),
+      ),
+      el(
+        'div',
+        { class: 'capa-rodape' },
+        el('span', {}, 'v 1.0'),
+        el('span', {}, 'Todos os direitos reservados'),
+      ),
+    ),
+  );
+}
+
 export function telaInicial(raiz, { temPartidaSalva, aoEscolherPerfil, aoContinuar }) {
   mostrar(
     raiz,
@@ -36,7 +71,7 @@ export function telaInicial(raiz, { temPartidaSalva, aoEscolherPerfil, aoContinu
     el(
       'div',
       { class: 'contratante-bloco' },
-      el('img', { class: 'contratante-foto', src: 'img/cliente.png', alt: 'Contratante da prefeitura' }),
+      el('img', { class: 'contratante-foto', src: 'img/cliente.webp', alt: 'Contratante da prefeitura' }),
       el(
         'div',
         { class: 'contratante-fala' },
@@ -117,7 +152,7 @@ export function telaJogo(raiz, estado, turno, aoEscolher) {
     el(
       'div',
       { class: 'contratante-bloco' },
-      el('img', { class: 'contratante-foto', src: 'img/cliente.png', alt: 'Contratante da prefeitura' }),
+      el('img', { class: 'contratante-foto', src: 'img/cliente.webp', alt: 'Contratante da prefeitura' }),
       el(
         'div',
         { class: 'contratante-fala' },
