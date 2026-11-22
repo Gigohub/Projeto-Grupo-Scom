@@ -2,7 +2,7 @@ import { criarEstado } from './motor/estado.js';
 import { turnoAtual, escolherCarta } from './motor/turno.js';
 import { resultadoFinal } from './motor/fim.js';
 import { salvar, carregar, apagar } from './salvamento.js';
-import { telaInicial, telaJogo, telaFinal } from './interface/telas.js';
+import { telaCapa, telaInicial, telaJogo, telaFinal } from './interface/telas.js';
 import { prepararMusica } from './musica.js';
 
 const raiz = document.getElementById('app');
@@ -10,6 +10,14 @@ let estado = null;
 let bloqueadoAte = 0;
 
 function inicio() {
+  telaCapa(raiz, {
+    temPartidaSalva: carregar() !== null,
+    aoJogar: escolherPerfil,
+    aoContinuar: continuar,
+  });
+}
+
+function escolherPerfil() {
   telaInicial(raiz, {
     temPartidaSalva: carregar() !== null,
     aoEscolherPerfil: novaPartida,
@@ -52,7 +60,6 @@ function escolher(disciplinaId) {
   }
 }
 
-prepararMusica(document.getElementById('musica'), 
-document.getElementById('botao-musica'));
+prepararMusica(document.getElementById('musica'), document.getElementById('botao-musica'));
 
-inicio();;
+inicio();
